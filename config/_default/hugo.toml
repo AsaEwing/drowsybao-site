@@ -3,9 +3,9 @@ defaultContentLanguage = "en"
 disableKinds = ["taxonomy", "term"]
 enableRobotsTXT = true
 languageCode = "en"
-timeZone = "Europe/Berlin"
+timeZone = "Asia/Taipei"
 timeout = "120s"
-title = "Gallery"
+title = "DrowsyBao"
 
 [params]
   defaultTheme = "dark"
