@@ -38,8 +38,8 @@ title = "Gallery"
 
 [menu]
   [[menu.footer]]
-    name = "GitHub"
-    url = "https://github.com/nicokaiser/hugo-theme-gallery/"
+    name = "License"
+    url = "https://drowsybao.com/nicokaiser/license"
     weight = 3
 
 [services]
