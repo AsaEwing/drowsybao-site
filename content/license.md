@@ -1,4 +1,13 @@
 
+---
+layout: page
+rss_ignore: true
+title: License
+menu:
+  main:
+    weight: 90
+---
+
                                  Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/

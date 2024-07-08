@@ -39,7 +39,7 @@ title = "Gallery"
 [menu]
   [[menu.footer]]
     name = "License"
-    url = "https://drowsybao.com/nicokaiser/license"
+    url = "https://drowsybao.com/license"
     weight = 3
 
 [services]
