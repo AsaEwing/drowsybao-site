@@ -1,4 +1,4 @@
-copyright = "© Your Name"
+copyright = "© 2024 DrowsyBao"
 defaultContentLanguage = "en"
 disableKinds = ["taxonomy", "term"]
 enableRobotsTXT = true
@@ -9,17 +9,16 @@ title = "Gallery"
 
 [params]
   defaultTheme = "dark"
-  description = "Example site for hugo-theme-gallery"
-  title = "My Gallery"
+  title = "DrowsyBao Gallery"
   [params.author]
-    email = "user@example.com"
-    name = "Your Name"
+    email = "service@drowsybao.com"
+    name = "Asa Kuo"
   [params.socialIcons]
-    facebook = "https://www.facebook.com/"
-    instagram = "https://www.instagram.com/"
-    github = "https://github.com/nicokaiser/hugo-theme-gallery/"
-    youtube = "https://www.youtube.com/"
-    email = "mailto:user@example.com"
+    #facebook = "https://www.facebook.com/"
+    instagram = "https://www.instagram.com/drowsybao"
+    #github = "https://github.com/nicokaiser/hugo-theme-gallery/"
+    #youtube = "https://www.youtube.com/"
+    email = "mailto:service@drowsybao.com"
     #website = "https://example.com"
     #mastodon = "https://example.com"
     #pixelfed = "https://example.com"
