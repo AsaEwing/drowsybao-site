@@ -1,7 +1,10 @@
 ---
-title: "Welcome to DrowsyBao Site"
-description: "A quick overview of my amazing site built with Hugo."
+title: "DrowsyBao Gallery"
 date: 2024-07-05
+menus:
+  main:
+    name: Home
+    weight: -1
 ---
 
 # Welcome to DrowsyBao Site
