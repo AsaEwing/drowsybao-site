@@ -1,0 +1,6 @@
+{{ $pages := where .Site.RegularPages "Type" .Get "path" }}
+<ul>
+{{ range $pages }}
+    <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+{{ end }}
+</ul>
