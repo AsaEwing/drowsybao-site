@@ -6,3 +6,10 @@ menu:
   main:
     weight: 90
 ---
+## Recent Posts
+
+Here are some of the latest posts from my instagram:
+
+{{< instagram C8RNeuNyaLa >}}
+{{< instagram C8RNpjiSkCm >}}
+{{< instagram C6biyePymLn >}}
