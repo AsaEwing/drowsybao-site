@@ -1,9 +1,7 @@
 module github.com/nicokaiser/hugo-gallery-starter
 
-go env -w GO111MODULE=auto
-
-go mod init
+go 1.18
 
 require github.com/nicokaiser/hugo-theme-gallery/v4 v4.0.0 // indirect
 
-replace github.com/nicokaiser/hugo-theme-gallery/v4 => ../
+replace github.com/nicokaiser/hugo-theme-gallery/v4 => ./themes/gallery
