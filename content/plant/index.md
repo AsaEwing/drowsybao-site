@@ -5,7 +5,7 @@ title: Plant
 sort_by: Name
 resources:
   - src: p1.jpg
-    title: Rain Lily
+    title: 風雨蘭
   - src: p2.jpg
-    title: Syngonium podophyllum
+    title: 斑葉合果芋
 ---
