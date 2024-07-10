@@ -10,11 +10,7 @@ menu:
 
 Here are some of the latest posts from my instagram:
 
-<div id="instapost">
-<ul>
-    <li>{{< instagram C8RNeuNyaLa >}}</li>
-    <li>{{< instagram C8RNpjiSkCm >}}</li>
-    <li>{{< instagram C6biyePymLn >}}</li>
-</ul>
-</div>
+{{< instagram C8RNeuNyaLa >}}
+{{< instagram C8RNpjiSkCm >}}
+{{< instagram C6biyePymLn >}}
 {{< instagram_common >}}
