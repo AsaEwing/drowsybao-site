@@ -14,14 +14,14 @@ title = "DrowsyBao"
     email = "service@drowsybao.com"
     name = "Asa Kuo"
   [params.socialIcons]
-    #facebook = "https://www.facebook.com/"
     instagram = "https://www.instagram.com/drowsybao"
-    #github = "https://github.com/nicokaiser/hugo-theme-gallery/"
-    #youtube = "https://www.youtube.com/"
     email = "mailto:service@drowsybao.com"
-    #website = "https://example.com"
-    #mastodon = "https://example.com"
-    #pixelfed = "https://example.com"
+    #facebook = "https://www.facebook.com/"
+    #github = "https://github.com/AsaEwing/drowsybao-site"
+    #youtube = "https://www.youtube.com/"
+    #website = "https://drowsybao.com"
+    #mastodon = "https://drowsybao.com"
+    #pixelfed = "https://drowsybao.com"
 
 [outputs]
   home = ["HTML", "RSS"]
