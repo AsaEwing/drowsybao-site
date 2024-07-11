@@ -1,6 +1,6 @@
 ---
 date: 2024-07-10
-imgdir: plant
+imgdir: "plant"
 featured_image: p2.jpg
 title: Plant
 sort_by: Name

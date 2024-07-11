@@ -1,6 +1,6 @@
 ---
 date: 2024-07-10
-imgdir: painting
+imgdir: "painting"
 featured_image: p1.jpg
 title: Painting
 sort_by: Name
