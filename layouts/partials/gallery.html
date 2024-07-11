@@ -4,7 +4,7 @@
     {{ $images := slice }}
     <!-- JavaScript for logging to console -->
     <script>
-      console.log("page2 imgdir: {{ .imgdir }}");
+      console.log("page2 imgdir: {{ $imgdir }}");
     </script>
     {{ range $image :=  .Resources.ByType "image" }}
       {{ $title := "" }}
