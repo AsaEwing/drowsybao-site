@@ -16,12 +16,14 @@
     {{ end }}
   {{ end }}
 
-  <!-- Logging examples -->
-  {{ printf "Number of images: %d" (len $images) }}
-  {{ printf "Featured image path: %s" $featured.RelPermalink }}
-  {{ printf "Thumbnail dimensions: %dx%d" $thumbnail.Width $thumbnail.Height }}
-  {{ printf "Album count: %d" $albumCount }}
-  {{ printf "Image count: %d" $imageCount }}
+  <!-- JavaScript for logging to console -->
+  <script>
+    console.log("Number of images: {{ len $images }}");
+    console.log("Featured image path: {{ $featured.RelPermalink }}");
+    console.log("Thumbnail dimensions: {{ $thumbnail.Width }}x{{ $thumbnail.Height }}");
+    console.log("Album count: {{ $albumCount }}");
+    console.log("Image count: {{ $imageCount }}");
+  </script>
 
   {{ $gallery = dict
     "page" $
