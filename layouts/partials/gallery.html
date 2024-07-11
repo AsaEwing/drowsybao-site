@@ -9,7 +9,6 @@
       console.log("page2 imageslist: {{ $imageslist }}");
     </script>
     {{ range $image :=  $imageslist }}
-    {{ with $gallery }}
       {{ $title := "" }}
       {{ with $image.Exif }}
         {{ with .Tags.ImageDescription }}
