@@ -6,4 +6,3 @@ menus:
     name: Home
     weight: -1
 ---
-{{< grayscale src="images/painting/p1.jpg">}}
