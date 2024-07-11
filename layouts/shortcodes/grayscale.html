@@ -1,0 +1,10 @@
+{{ $src := .Get "src" }}
+{{ $filter := images.Grayscale }}
+
+{{ with resources.Get $src }}
+  {{ $image := . }}
+  {{ if $filter }}
+    {{ $image = $image.Filter $filter }}
+  {{ end }}
+  <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="">
+{{ end }}
