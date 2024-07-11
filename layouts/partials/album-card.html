@@ -5,6 +5,8 @@
   <script>
     console.log("page RelPermalink: {{ .page.RelPermalink }}");
     console.log("page Title: {{ .page.Title }}");
+    console.log("page albumCount: {{ .page.albumCount }}");
+    console.log("page imageCount: {{ .page.imageCount }}");
   </script>
   <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
     {{ $thumbnail := .thumbnail }}
