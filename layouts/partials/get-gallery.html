@@ -15,6 +15,14 @@
       {{ $imageCount = add $imageCount (len (.Resources.ByType "image")) }}
     {{ end }}
   {{ end }}
+
+  <!-- Logging examples -->
+  {{ printf "Number of images: %d" (len $images) }}
+  {{ printf "Featured image path: %s" $featured.RelPermalink }}
+  {{ printf "Thumbnail dimensions: %dx%d" $thumbnail.Width $thumbnail.Height }}
+  {{ printf "Album count: %d" $albumCount }}
+  {{ printf "Image count: %d" $imageCount }}
+
   {{ $gallery = dict
     "page" $
     "images" $images
