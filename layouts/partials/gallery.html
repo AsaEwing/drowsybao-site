@@ -8,7 +8,8 @@
       console.log("page2 imgdir: {{ $imgdir }}");
       console.log("page2 imageslist: {{ $imageslist }}");
     </script>
-    {{ range $image :=  .Resources.ByType "image" }}
+    {{ range $image :=  $imageslist }}
+    {{ with $gallery }}
       {{ $title := "" }}
       {{ with $image.Exif }}
         {{ with .Tags.ImageDescription }}
