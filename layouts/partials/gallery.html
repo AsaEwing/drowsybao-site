@@ -1,14 +1,11 @@
+{{ $imgdir := (.Params.imgdir | default "NULL") }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
-    <!-- {{ $images := slice }} -->
+    {{ $images := slice }}
     <!-- JavaScript for logging to console -->
-    {{ $imgdir := (.Params.imgdir | default "NULL") }}
-    {{ $imageslist :=  resources.Match (printf "images/%s/*.jpg" ($imgdir)) }}
     <script>
-      console.log("page2 imgdir: {{ $imgdir }}");
-      console.log("page2 images: {{ $imageslist }}");
+      console.log("page2 imgdir: {{ .imgdir }}");
     </script>
-    <!-- {{ range $image :=  .Resources.ByType "image" }} -->
     {{ range $image :=  .Resources.ByType "image" }}
       {{ $title := "" }}
       {{ with $image.Exif }}
