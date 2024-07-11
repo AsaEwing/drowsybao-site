@@ -3,13 +3,13 @@
     <!-- {{ $images := slice }} -->
     <!-- JavaScript for logging to console -->
     {{ $imgdir := (.Params.imgdir | default "NULL") }}
-    {{ $image :=  resources.Match (printf "images/%s/*.jpg" ($imgdir)) }}
+    {{ $imageslist :=  resources.Match (printf "images/%s/*.jpg" ($imgdir)) }}
     <script>
       console.log("page2 imgdir: {{ $imgdir }}");
-      console.log("page2 images: {{ $images }}");
+      console.log("page2 images: {{ $imageslist }}");
     </script>
     <!-- {{ range $image :=  .Resources.ByType "image" }} -->
-    {{ range $image }}
+    {{ range $image :=  .Resources.ByType "image" }}
       {{ $title := "" }}
       {{ with $image.Exif }}
         {{ with .Tags.ImageDescription }}
