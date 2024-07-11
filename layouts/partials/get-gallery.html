@@ -1,6 +1,6 @@
 {{ $gallery := "" }}
-{{ $images := resources.GetMatch "images/*" }}
-{{ if gt (len $images) 0 }}
+{{ $images := .Resources.ByType "image" }}
+<!--{{ if gt (len $images) 0 }}-->
   {{ $featured := ($images.GetMatch (printf "images/%s" (.Params.featured_image | default "*feature*"))) | default (index $images 0) }}
   {{ $thumbnail := $featured.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
   {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
@@ -22,5 +22,5 @@
     "albumCount" $albumCount
     "imageCount" $imageCount
   }}
-{{ end }}
+<!--{{ end }}-->
 {{ return $gallery }}
