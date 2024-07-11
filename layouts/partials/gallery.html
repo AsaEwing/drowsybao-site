@@ -26,6 +26,11 @@
         "image" $image
         )
       }}
+      <!-- JavaScript for logging to console -->
+      <script>
+        console.log("page2 title: {{ $title }}");
+        console.log("page2 Name: {{ $image.Name }}");
+      </script>
     {{ end }}
     {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
       {{ $image := .image }}
