@@ -1,6 +1,11 @@
 {{ $gallery := partial "get-gallery.html" . }}
 {{ $filter := images.Grayscale }}
 {{ with $gallery }}
+  <!-- JavaScript for logging to console -->
+  <script>
+    console.log("page RelPermalink: {{ .page.RelPermalink }}");
+    console.log("page Title: {{ .page.Title }}");
+  </script>
   <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
     {{ $thumbnail := .thumbnail }}
     {{ if $filter }}
