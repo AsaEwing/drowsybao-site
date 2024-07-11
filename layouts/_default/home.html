@@ -6,10 +6,4 @@
       {{ partial "album-card.html" . }}
     {{ end }}
   </section>
-  {{ $filter := images.Grayscale }}
-  {{ with resources.Get "images/painting/p1.jpg" }}
-    {{ with .Filter $filter }}
-      <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-    {{ end }}
-  {{ end }}
 {{ end }}

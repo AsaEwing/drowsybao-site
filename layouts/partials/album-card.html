@@ -2,6 +2,7 @@
 {{ $filter := images.Grayscale }}
 {{ with $gallery }}
   <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
+    {{ $thumbnail := .thumbnail }}
     {{ if $filter }}
       {{ $thumbnail = $thumbnail.Filter $filter }}
     {{ end }}
