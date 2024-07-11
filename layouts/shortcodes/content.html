@@ -4,9 +4,3 @@
     <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
 {{ end }}
 </ul>
-{{ $filter := images.Grayscale }}
-{{ with resources.Get "images/painting/p1.jpg" }}
-  {{ with . | images.Filter $filter }}
-    <img src="{{ .RelPermalink }}" width="{{ .Width }}" height="{{ .Height }}" alt="">
-  {{ end }}
-{{ end }}
