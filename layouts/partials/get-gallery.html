@@ -1,6 +1,5 @@
 {{ $gallery := "" }}
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
-<!--{{ $images := .Resources.ByType "image" }}-->
 {{ $images := resources.Match (printf "images/%s/*.jpg" ($imgdir)) }}
 {{ if gt (len $images) 0 }}
   {{ $featured := ($images.GetMatch (printf "images/%s/%s" ($imgdir) (.Params.featured_image | default "*feature*"))) | default (index $images 0) }}
