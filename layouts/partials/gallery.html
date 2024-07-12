@@ -21,7 +21,7 @@
             console.log("rawdata title: {{ $resource.title }}");
           </script>
           {{ if eq $src $image.Name }}
-            {{ $title := $resource.title }}
+            {{ $title = $resource.title }}
             {{ with $resource.params.description }}
               {{ $description = . }}
             {{ end }}
