@@ -1,5 +1,5 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
-{{ $imageslist := resources.Match (printf "images/%s/*.jpg" ($imgdir)) }}
+{{ $imageslist := Resources.Match (printf "images/%s/*.jpg" ($imgdir)) }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
