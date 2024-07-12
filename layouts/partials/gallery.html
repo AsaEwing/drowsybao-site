@@ -24,7 +24,7 @@
         {{ $nameTmp := $image.Name }}
         {{ replace $nameTmp (printf "images/%s/" $imgdir) "" }}
         {{ range .Match $nameTmp }}
-          {{ $title = .Title }}
+          {{ $title = .title }}
         {{ end }}
       {{ end }}
       {{ $images = $images | append (dict
