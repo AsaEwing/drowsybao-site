@@ -1,5 +1,6 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
 {{ $imageslist := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
+{{ $rawdata := (.Params.resources | default "NULL") }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
@@ -7,6 +8,7 @@
     <script>
       console.log("page2 imgdir: {{ $imgdir }}");
       console.log("page2 imageslist: {{ $imageslist }}");
+      console.log("resources rawdata: {{ $rawdata }}");
     </script>
     {{ range $image := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
       {{ $title := "" }}
@@ -19,18 +21,6 @@
       {{ if ne $image.Title $image.Name }}
         {{/* Title from front matter */}}
         {{ $title = $image.Title }}
-      {{ end }}
-      {{ range $rawdata := .Params.resources }}
-        {{ $nameTmp := $image.Name }}
-        {{ replace $nameTmp (printf "images/%s/" $imgdir) "" }}
-        <!-- JavaScript for logging to console -->
-        <script>
-          console.log("resources rawdata: {{ $rawdata }}");
-          console.log("resources name : {{ $nameTmp }}");
-        </script>
-        {{ if eq $nameTmp .src }}
-          {{ $title = .title }}
-        {{ end }}
       {{ end }}
       {{ $images = $images | append (dict
         "Name" $image.Name
