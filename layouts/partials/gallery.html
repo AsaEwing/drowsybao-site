@@ -20,11 +20,11 @@
         {{/* Title from front matter */}}
         {{ $title = $image.Title }}
       {{ end }}
-      {{ with resources }}
+      {{ with .Page.Resources }}
         {{ $nameTmp := $image.Name }}
         {{ replace $nameTmp (printf "images/%s/" $imgdir) "" }}
         {{ range .Match $nameTmp }}
-          {{ $title = .src }}
+          {{ $title = .Title }}
         {{ end }}
       {{ end }}
       {{ $images = $images | append (dict
