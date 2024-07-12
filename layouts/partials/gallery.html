@@ -27,7 +27,8 @@
           {{ $src := (printf "/images/%s/%s" $imgdir $resource.src) }}
           <script>
             console.log("rawdata src: {{ $src }}");
-            console.log("rawdata resource.src: {{ $resource.src }}");
+            console.log("rawdata image.Name: {{ $image.Name }}");
+            console.log("rawdata title: {{ $resource.title }}");
           </script>
           {{ if eq $src $image.Name }}
             {{ $title := $resource.title }}
