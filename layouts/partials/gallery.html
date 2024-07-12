@@ -25,16 +25,15 @@
       {{ if ne $rawdata "NULL" }}
         {{ range $resource := $rawdata }}
           {{ $src := (printf "images/%s/%s" $imgdir $resource.src) }}
+          <script>
+            console.log("rawdata src: {{ $src }}");
+            console.log("rawdata resource.src: {{ $resource.src }}");
+          </script>
           {{ if eq $src $image.Name }}
             {{ $title := $resource.title }}
             {{ with $resource.params.description }}
               {{ $description = . }}
             {{ end }}
-            <script>
-              console.log("resources src: {{ $src }}");
-              console.log("resources title: {{ $title }}");
-              console.log("resources description: {{ $description }}");
-            </script>
           {{ end }}
         {{ end }}
       {{ end }}
@@ -49,6 +48,7 @@
       <script>
         console.log("page2 title: {{ $title }}");
         console.log("page2 Name: {{ $image.Name }}");
+        console.log("page2 description: {{ $description }}");
       </script>
     {{ end }}
     {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
