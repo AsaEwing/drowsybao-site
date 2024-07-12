@@ -23,6 +23,12 @@
       {{ with .Params.resources }}
         {{ $nameTmp := $image.Name }}
         {{ replace $nameTmp (printf "images/%s/" $imgdir) "" }}
+        <!-- JavaScript for logging to console -->
+        <script>
+          console.log("resources title: {{ .title }}");
+          console.log("resources name : {{ $nameTmp }}");
+          console.log("resources src  : {{ .src }}");
+        </script>
         {{ if eq $nameTmp .src }}
           {{ $title = .title }}
         {{ end }}
