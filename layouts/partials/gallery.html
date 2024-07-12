@@ -20,9 +20,9 @@
         {{/* Title from front matter */}}
         {{ $title = $image.Title }}
       {{ end }}
-      {{ range .Resources }}
-        {{ if eq $image.Name .src }}
-          {{ $title = .title }}
+      {{ with .Page.Resources }}
+        {{ range .Match (printf "%s/%s" $imgdir $image.Name) }}
+          {{ $title = .Title }}
         {{ end }}
       {{ end }}
       {{ $images = $images | append (dict
