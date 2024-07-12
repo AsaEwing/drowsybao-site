@@ -1,6 +1,21 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
 {{ $imageslist := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
+{{ if ne $rawdata "NULL" }}
+  {{ range $resource := $rawdata }}
+    {{ $src := $resource.src }}
+    {{ $title := $resource.title }}
+    {{ $description := "" }}
+    {{ with $resource.params.description }}
+      {{ $description = . }}
+    {{ end }}
+    <script>
+      console.log("resources src: {{ $src }}");
+      console.log("resources title: {{ $title }}");
+      console.log("resources description: {{ $description }}");
+    </script>
+  {{ end }}
+{{ end }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
@@ -8,7 +23,6 @@
     <script>
       console.log("page2 imgdir: {{ $imgdir }}");
       console.log("page2 imageslist: {{ $imageslist }}");
-      console.log("resources rawdata: {{ $rawdata }}");
     </script>
     {{ range $image := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
       {{ $title := "" }}
