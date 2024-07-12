@@ -20,8 +20,10 @@
         {{/* Title from front matter */}}
         {{ $title = $image.Title }}
       {{ end }}
-      {{ if eq $image.Name .src }}
-        {{ $title = .title }}
+      {{ range .Resources }}
+        {{ if eq $image.Name .src }}
+          {{ $title = .title }}
+        {{ end }}
       {{ end }}
       {{ $images = $images | append (dict
         "Name" $image.Name
