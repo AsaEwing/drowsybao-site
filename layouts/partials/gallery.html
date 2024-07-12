@@ -20,7 +20,7 @@
         {{/* Title from front matter */}}
         {{ $title = $image.Title }}
       {{ end }}
-      {{ with .Params.resources }}
+      {{ range .Params.resources }}
         {{ $nameTmp := $image.Name }}
         {{ replace $nameTmp (printf "images/%s/" $imgdir) "" }}
         <!-- JavaScript for logging to console -->
