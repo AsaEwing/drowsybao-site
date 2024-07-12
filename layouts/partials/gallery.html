@@ -6,20 +6,10 @@
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
-    <!-- JavaScript for logging to console -->
-    <script>
-      console.log("page2 imgdir: {{ $imgdir }}");
-      console.log("page2 imageslist: {{ $imageslist }}");
-    </script>
     {{ range $image := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
       {{ if ne $rawdata "NULL" }}
         {{ range $resource := $rawdata }}
           {{ $src := (printf "/images/%s/%s" $imgdir $resource.src) }}
-          <script>
-            console.log("rawdata src: {{ $src }}");
-            console.log("rawdata image.Name: {{ $image.Name }}");
-            console.log("rawdata title: {{ $resource.title }}");
-          </script>
           {{ if eq $src $image.Name }}
             {{ $title = $resource.title }}
             {{ with $resource.params.description }}
@@ -37,9 +27,9 @@
       }}
       <!-- JavaScript for logging to console -->
       <script>
-        console.log("page2 title: {{ $title }}");
-        console.log("page2 Name: {{ $image.Name }}");
-        console.log("page2 description: {{ $description }}");
+        console.log("gallery title: {{ $title }}");
+        console.log("gallery Name: {{ $image.Name }}");
+        console.log("gallery description: {{ $description }}");
       </script>
     {{ end }}
     {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
@@ -47,7 +37,7 @@
       {{ $thumbnail := $image.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
       {{ $full := $image.Filter (slice images.AutoOrient (images.Process "fit 1600x1600")) }}
       {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
-      <a class="gallery-item" href="{{ $image.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}" data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" title="{{ .Title }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $thumbnail.Width }} / {{ $thumbnail.Height }}">
+      <a class="gallery-item" href="{{ $image.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}" data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" title="{{ .Title }}" description="{{ .Description }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $thumbnail.Width }} / {{ $thumbnail.Height }}">
         <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ $color }}" alt="{{ .Title }}" />
         <meta itemprop="contentUrl" content="{{ $image.RelPermalink }}" />
         {{ with site.Params.Author }}
