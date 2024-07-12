@@ -1,21 +1,8 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
 {{ $imageslist := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
-{{ if ne $rawdata "NULL" }}
-  {{ range $resource := $rawdata }}
-    {{ $src := $resource.src }}
-    {{ $title := $resource.title }}
-    {{ $description := "" }}
-    {{ with $resource.params.description }}
-      {{ $description = . }}
-    {{ end }}
-    <script>
-      console.log("resources src: {{ $src }}");
-      console.log("resources title: {{ $title }}");
-      console.log("resources description: {{ $description }}");
-    </script>
-  {{ end }}
-{{ end }}
+{{ $title := "" }}
+{{ $description := "" }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
@@ -25,7 +12,6 @@
       console.log("page2 imageslist: {{ $imageslist }}");
     </script>
     {{ range $image := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
-      {{ $title := "" }}
       {{ with $image.Exif }}
         {{ with .Tags.ImageDescription }}
           {{/* Title from EXIF ImageDescription */}}
@@ -36,9 +22,26 @@
         {{/* Title from front matter */}}
         {{ $title = $image.Title }}
       {{ end }}
+      {{ if ne $rawdata "NULL" }}
+        {{ range $resource := $rawdata }}
+          {{ $src := (printf "images/%s/%s" $imgdir $resource.src) }}
+          {{ if eq $src $image.Name }}
+            {{ $title := $resource.title }}
+            {{ with $resource.params.description }}
+              {{ $description = . }}
+            {{ end }}
+            <script>
+              console.log("resources src: {{ $src }}");
+              console.log("resources title: {{ $title }}");
+              console.log("resources description: {{ $description }}");
+            </script>
+          {{ end }}
+        {{ end }}
+      {{ end }}
       {{ $images = $images | append (dict
         "Name" $image.Name
         "Title" $title
+        "Description" $description
         "image" $image
         )
       }}
