@@ -12,16 +12,6 @@
       console.log("page2 imageslist: {{ $imageslist }}");
     </script>
     {{ range $image := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
-      {{ with $image.Exif }}
-        {{ with .Tags.ImageDescription }}
-          {{/* Title from EXIF ImageDescription */}}
-          {{ $title = . }}
-        {{ end }}
-      {{ end }}
-      {{ if ne $image.Title $image.Name }}
-        {{/* Title from front matter */}}
-        {{ $title = $image.Title }}
-      {{ end }}
       {{ if ne $rawdata "NULL" }}
         {{ range $resource := $rawdata }}
           {{ $src := (printf "/images/%s/%s" $imgdir $resource.src) }}
