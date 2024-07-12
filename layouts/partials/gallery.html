@@ -21,7 +21,9 @@
         {{ $title = $image.Title }}
       {{ end }}
       {{ with resources }}
-        {{ range .Match (printf "%s/%s" $imgdir $image.Name) }}
+        {{ $nameTmp := $image.Name }}
+        {{ replace $nameTmp (printf "images/%s/" $imgdir) "" }}
+        {{ range .Match $nameTmp }}
           {{ $title = .Title }}
         {{ end }}
       {{ end }}
