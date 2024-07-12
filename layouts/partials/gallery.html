@@ -24,7 +24,7 @@
       {{ end }}
       {{ if ne $rawdata "NULL" }}
         {{ range $resource := $rawdata }}
-          {{ $src := (printf "images/%s/%s" $imgdir $resource.src) }}
+          {{ $src := (printf "/images/%s/%s" $imgdir $resource.src) }}
           <script>
             console.log("rawdata src: {{ $src }}");
             console.log("rawdata resource.src: {{ $resource.src }}");
