@@ -6,3 +6,4 @@ menus:
     name: Blog
     weight: -1
 ---
+[Test]({{< ref "/blog/test" >}} "Test Blog")
