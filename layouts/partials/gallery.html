@@ -1,10 +1,7 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
 {{ $imageslist := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
-{{ $filters := slice 
-   images.Colorize 30 80 80
-   (images.Brightness -12) 
-}}
+{{ $filters := slice (images.Colorize 30 80 80) (images.Brightness -12) }}
 {{ $title := "" }}
 {{ $description := "" }}
 <section class="gallery">
@@ -23,13 +20,15 @@
         {{ end }}
       {{ end }}
       {{ if $filters }}
-        {{ $image = $image.Filter $filters }}
+        {{ $imageTmp := $image | $image.Filter $filters }}
+      {{ else }}
+        {{ $imageTmp := $image }}
       {{ end }}
       {{ $images = $images | append (dict
         "Name" $image.Name
         "Title" $title
         "Description" $description
-        "image" $image
+        "image" $imageTmp
         )
       }}
       <!-- JavaScript for logging to console -->
