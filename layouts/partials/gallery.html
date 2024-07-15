@@ -2,7 +2,7 @@
 {{ $imageslist := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
 {{ $filters := slice (images.Colorize 30 80 80) (images.Brightness -12) }}
-{{ $filter1 := (images.Colorize 30 80 80) }}
+{{ $filter1 := (images.Colorize 77 80 80) }}
 {{ $filter2 := (images.Brightness -12) }}
 {{ $title := "" }}
 {{ $description := "" }}
