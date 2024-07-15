@@ -1,10 +1,12 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
-{{ $imageslist := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
 <!-- Colorize 色相[0, 360] 飽和度[0, 100] 百分比[0, 100] -->
 {{ $filter1 := (images.Colorize 188 30 12) }}
 <!-- Brightness 百分比[-100, 100] -->
 {{ $filter2 := (images.Brightness -12) }}
+<!-- 浮水印 -->
+{{ $logo := resources.Get "/images/copyright_drowsybao.png"}} 
+{{ $logoFilter := (images.Overlay $logo 24 24 ) }}
 {{ $title := "" }}
 {{ $description := "" }}
 {{ $imageTmp := slice }}
@@ -26,6 +28,7 @@
       {{ $imageTmp := $image }}
       {{ $imageTmp = $imageTmp.Filter $filter1 }}
       {{ $imageTmp = $imageTmp.Filter $filter2 }}
+      {{ $imageTmp = $imageTmp.Filter $logoFilter }}
       {{ $images = $images | append (dict
         "Name" $image.Name
         "Title" $title
