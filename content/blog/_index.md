@@ -1,9 +1,10 @@
 ---
+layout: page
+rss_ignore: true
 title: "Blog"
-date: 2024-07-15
-menus:
+menu:
   main:
-    name: Blog
-    weight: -1
+    weight: 90
 ---
+
 [Test]({{< ref "/blog/test" >}} "Test Blog")
