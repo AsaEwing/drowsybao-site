@@ -6,6 +6,6 @@ title: Painting
 sort_by: Name
 resources:
   - src: p1.jpg
-	  imgsubdir: "膠彩/血百合/圖"
+    imgsubdir: "膠彩/血百合/圖"
     title: 膠彩 血百合
 ---
