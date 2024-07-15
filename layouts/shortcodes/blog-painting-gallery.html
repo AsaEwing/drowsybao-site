@@ -8,7 +8,7 @@
 {{ $imgdir := printf "images/%s/%s" (.Get "imgdir" | default "NULL") (.Get "imgsubdir" | default "NULL") }}
 {{ $image := resources.Match (printf "%s/%s" $imgdir (.Get "name" | default "NULL")) }}
 {{ $imageTmp := $image }}
-{{ $imageTmp = $imageTmp | $filter1 }}
-{{ $imageTmp = $imageTmp | $filter2 }}
-{{ $imageTmp = $imageTmp | $logoFilter }}
+{{ $imageTmp = $imageTmp.Filter $filter1 }}
+{{ $imageTmp = $imageTmp.Filter $filter2 }}
+{{ $imageTmp = $imageTmp.Filter $logoFilter }}
 <img src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}">
