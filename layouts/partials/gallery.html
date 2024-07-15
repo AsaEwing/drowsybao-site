@@ -22,8 +22,7 @@
       {{ end }}
       {{ $imageTmp := $image }}
       {{ if $filters }}
-        {{ range $filter := $filters }}
-          {{ $imageTmp = $imageTmp | $filter }}
+        {{ with $imageTmp.Filter $filters }}
         {{ end }}
       {{ end }}
       {{ $images = $images | append (dict
