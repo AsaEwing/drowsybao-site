@@ -4,6 +4,7 @@
 {{ $filters := slice (images.Colorize 30 80 80) (images.Brightness -12) }}
 {{ $title := "" }}
 {{ $description := "" }}
+{{ $imageTmp := slice }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
