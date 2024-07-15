@@ -21,7 +21,7 @@
         {{ end }}
       {{ end }}
       {{ if $filters }}
-        {{ $imageTmp := $image | $image.Filter $filters }}
+        {{ $imageTmp := $image | images.Filter $filters }}
       {{ else }}
         {{ $imageTmp := $image }}
       {{ end }}
