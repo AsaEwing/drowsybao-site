@@ -7,7 +7,8 @@
 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
 {{ $imgdir := printf "images/%s/%s" (.Get "imgdir" | default "NULL") (.Get "imgsubdir" | default "NULL") }}
 {{ $image := resources.Match (printf "%s/%s" $imgdir (.Get "name" | default "NULL")) }}
-{{ $image = $image.Filter $filter1 }}
-{{ $image = $image.Filter $filter2 }}
-{{ $image = $image.Filter $logoFilter }}
-<img src="{{ $image.RelPermalink }}" alt="{{ $image.Name }}">
+{{ $imageTmp := $image }}
+{{ $imageTmp = $imageTmp | $filter1 }}
+{{ $imageTmp = $imageTmp | $filter2 }}
+{{ $imageTmp = $imageTmp | $logoFilter }}
+<img src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}">
