@@ -1,14 +1,18 @@
-<ul>
-  {{ range .Site.Menus.main }}
-    <li>
-      <a href="{{ .URL }}">{{ .Name }}</a>
-      {{ if .HasChildren }}
-        <ul>
-          {{ range .Children }}
-            <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-          {{ end }}
-        </ul>
-      {{ end }}
-    </li>
-  {{ end }}
-</ul>
+{{ with site.Menus.main }}
+  <menu class="hidden" id="menu">
+    {{ range . }}
+      <!-- JavaScript for logging to console -->
+      <script>
+        console.log("menu name: {{ .Name }}");
+        console.log("menu HasChildren: {{ .HasChildren }}");
+        console.log("menu URL: {{ .URL }}");
+        console.log("menu MenuCurrent: {{ or (page.IsMenuCurrent .Menu .) (page.HasMenuCurrent .Menu .) }}");
+      </script>
+      <li itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+        <a aria-current="{{ or (page.IsMenuCurrent .Menu .) (page.HasMenuCurrent .Menu .) }}" href="{{ .URL }}" itemprop="url">
+          <span itemprop="name">{{ .Name }}</span>
+        </a>
+      </li>
+    {{ end }}
+  </menu>
+{{ end }}
