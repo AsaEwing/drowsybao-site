@@ -6,7 +6,7 @@
 {{ $logo := resources.Get "/images/copyright_drowsybao.png" }} 
 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
 {{ $imgdir := printf "images/%s/%s" (.Get "imgdir" | default "NULL") (.Get "imgsubdir" | default "NULL") }}
-{{ $image := resources.Match (printf "%s/p1.jpg" (.Get "name" | default "NULL")) }}
+{{ $image := resources.Match (printf "%s/%s" $imgdir (.Get "name" | default "NULL")) }}
 {{ $image = $image.Filter $filter1 }}
 {{ $image = $image.Filter $filter2 }}
 {{ $image = $image.Filter $logoFilter }}
