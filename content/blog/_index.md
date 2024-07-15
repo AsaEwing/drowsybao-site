@@ -6,4 +6,4 @@ menu:
   main:
     weight: 90
 ---
-[Test]({{< ref "/blog/test" >}} "Test Blog")
+[膠彩_血百合]({{< ref "/blog/膠彩_血百合" >}})

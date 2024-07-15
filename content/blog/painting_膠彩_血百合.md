@@ -1,5 +1,5 @@
 ---
-title: "Test Blog"
+title: "膠彩 血百合"
 date: 2024-07-15
 imgdir: "painting"
 featured_image: "p1.jpg"
@@ -9,7 +9,6 @@ resources:
     title: "Sample Image 1"
     description: "Description for Sample Image 1"
 ---
-
 # Test Blog Post
 
 This is a sample blog post to test image processing and filters in Hugo.
@@ -24,21 +23,26 @@ Below are the images with applied filters:
 {{ range $image := $images }}
   {{ $imageFiltered := $image }}
 
-  <!-- Apply Colorize filter -->
+<!-- Apply Colorize filter -->
+
   {{ $imageFiltered = $imageFiltered | images.Colorize 30 80 80 }}
 
-  <!-- Apply Brightness filter -->
+<!-- Apply Brightness filter -->
+
   {{ $imageFiltered = $imageFiltered | images.Brightness -12 }}
 
-  <!-- Output the filtered image -->
-  <div class="gallery-item">
+<!-- Output the filtered image -->
+
+<div class="gallery-item">
     <img src="{{ $imageFiltered.RelPermalink }}" alt="{{ $imageFiltered.Name }}" width="300">
     <h2>{{ $image.Title }}</h2>
     <p>{{ $image.Description }}</p>
   </div>
 
-  <!-- JavaScript for logging to console -->
-  <script>
+<!-- JavaScript for logging to console -->
+
+<script>
     console.log("Filtered image path: {{ $imageFiltered.RelPermalink }}");
   </script>
+
 {{ end }}
