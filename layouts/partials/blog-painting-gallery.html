@@ -1,0 +1,13 @@
+<!-- Colorize 色相[0, 360] 飽和度[0, 100] 百分比[0, 100] -->
+{{ $filter1 := (images.Colorize 188 30 12) }}
+<!-- Brightness 百分比[-100, 100] -->
+{{ $filter2 := (images.Brightness -12) }}
+<!-- 浮水印 -->
+{{ $logo := resources.Get "/images/copyright_drowsybao.png" }} 
+{{ $logoFilter := (images.Overlay $logo 24 198 ) }}
+{{ $imgdir := printf "images/%s/%s" (.Get "imgdir" | default "NULL") (.Get "imgsubdir" | default "NULL") }}
+{{ $image := resources.Match (printf "%s/p1.jpg" (.Get "name" | default "NULL")) }}
+{{ $image = $image.Filter $filter1 }}
+{{ $image = $image.Filter $filter2 }}
+{{ $image = $image.Filter $logoFilter }}
+<img src="{{ $image.RelPermalink }}" alt="{{ $image.Name }}">
