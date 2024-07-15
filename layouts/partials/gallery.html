@@ -23,15 +23,23 @@
       {{ $imageTmp := $image }}
       {{ if $filters }}
         {{ with $imageTmp.Filter $filters }}
+          {{ $images = $images | append (dict
+            "Name" $image.Name
+            "Title" $title
+            "Description" $description
+            "image" $imageTmp
+            )
+          }}
         {{ end }}
+      {{ else }}
+        {{ $images = $images | append (dict
+          "Name" $image.Name
+          "Title" $title
+          "Description" $description
+          "image" $imageTmp
+          )
+        }}
       {{ end }}
-      {{ $images = $images | append (dict
-        "Name" $image.Name
-        "Title" $title
-        "Description" $description
-        "image" $imageTmp
-        )
-      }}
       <!-- JavaScript for logging to console -->
       <script>
         console.log("gallery title: {{ $title }}");
