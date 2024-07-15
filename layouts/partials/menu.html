@@ -1,17 +1,21 @@
 {{ with site.Menus.main }}
   <menu class="hidden" id="menu">
     {{ range . }}
-      <!-- JavaScript for logging to console -->
-      <script>
-        console.log("menu name: {{ .Name }}");
-        console.log("menu HasChildren: {{ .HasChildren }}");
-        console.log("menu URL: {{ .URL }}");
-        console.log("menu MenuCurrent: {{ or (page.IsMenuCurrent .Menu .) (page.HasMenuCurrent .Menu .) }}");
-      </script>
-      <li itemscope itemtype="http://www.schema.org/SiteNavigationElement">
-        <a aria-current="{{ or (page.IsMenuCurrent .Menu .) (page.HasMenuCurrent .Menu .) }}" href="{{ .URL }}" itemprop="url">
+      <li class="{{ if .HasChildren }}has-children{{ end }} {{ if page.IsMenuCurrent "main" . }}active{{ end }}" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+        <a aria-current="{{ if or (page.IsMenuCurrent "main" .) (page.HasMenuCurrent "main" .) }}page{{ else }}false{{ end }}" href="{{ .URL }}" itemprop="url">
           <span itemprop="name">{{ .Name }}</span>
         </a>
+        {{ if .HasChildren }}
+          <ul class="sub-menu">
+            {{ range .Children }}
+              <li class="{{ if page.HasMenuCurrent "main" . }}active{{ end }}" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+                <a aria-current="{{ if or (page.IsMenuCurrent "main" .) (page.HasMenuCurrent "main" .) }}page{{ else }}false{{ end }}" href="{{ .URL }}" itemprop="url">
+                  <span itemprop="name">{{ .Name }}</span>
+                </a>
+              </li>
+            {{ end }}
+          </ul>
+        {{ end }}
       </li>
     {{ end }}
   </menu>
