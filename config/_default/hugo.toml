@@ -43,6 +43,27 @@ title = "DrowsyBao"
     path = "github.com/nicokaiser/hugo-theme-gallery/v4"
 
 [menu]
+  [[menus.main]]
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+  [[menus.main]]
+    name = 'Blog'
+    pageRef = '/blog'
+    weight = 10
+  [[menus.main]]
+    name = 'Test Blog'
+    pageRef = '/blog/test'
+    parent = 'Blog'
+    weight = 1
+  [[menus.main]]
+    name = 'About'
+    pageRef = '/about'
+    weight = 10
+  [[menus.main]]
+    name = 'License'
+    pageRef = '/license'
+    weight = 10
   [[menu.footer]]
     name = "License"
     url = "https://drowsybao.com/license"
