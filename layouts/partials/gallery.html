@@ -1,7 +1,9 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
 {{ $imageslist := resources.Match (printf "images/%s/*.jpg" $imgdir) }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
-{{ $filters := slice (images.Colorize 30 80 80) (images.Brightness -82) }}
+{{ $filters := slice (images.Colorize 30 80 80) (images.Brightness -12) }}
+{{ $filter1 := (images.Colorize 30 80 80) }}
+{{ $filter2 := (images.Brightness -12) }}
 {{ $title := "" }}
 {{ $description := "" }}
 {{ $imageTmp := slice }}
@@ -21,25 +23,15 @@
         {{ end }}
       {{ end }}
       {{ $imageTmp := $image }}
-      {{ if $filters }}
-        {{ with $imageTmp.Filter $filters }}
-          {{ $images = $images | append (dict
-            "Name" $image.Name
-            "Title" $title
-            "Description" $description
-            "image" $imageTmp
-            )
-          }}
-        {{ end }}
-      {{ else }}
-        {{ $images = $images | append (dict
-          "Name" $image.Name
-          "Title" $title
-          "Description" $description
-          "image" $imageTmp
-          )
-        }}
-      {{ end }}
+      {{ $imageTmp = $imageTmp.Filter $filter1 }}
+      {{ $imageTmp = $imageTmp.Filter $filter2 }}
+      {{ $images = $images | append (dict
+        "Name" $image.Name
+        "Title" $title
+        "Description" $description
+        "image" $imageTmp
+        )
+      }}
       <!-- JavaScript for logging to console -->
       <script>
         console.log("gallery title: {{ $title }}");
