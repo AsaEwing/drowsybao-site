@@ -51,6 +51,7 @@ title = "DrowsyBao"
     name = 'Blog'
     pageRef = '/blog'
     weight = 10
+    identifier = "Blog"
   [[menus.main]]
     name = '膠彩 血百合'
     pageRef = '/blog/膠彩_血百合'
