@@ -20,10 +20,11 @@
           {{ end }}
         {{ end }}
       {{ end }}
+      {{ $imageTmp := $image }}
       {{ if $filters }}
-        {{ $imageTmp := $image | images.Filter $filters }}
-      {{ else }}
-        {{ $imageTmp := $image }}
+        {{ range $filter := $filters }}
+          {{ $imageTmp = $imageTmp | $filter }}
+        {{ end }}
       {{ end }}
       {{ $images = $images | append (dict
         "Name" $image.Name
