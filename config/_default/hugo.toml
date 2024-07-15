@@ -53,9 +53,9 @@ title = "DrowsyBao"
     weight = 10
     identifier = "Blog"
   [[menus.main]]
+    parent = 'Blog'
     name = '膠彩 血百合'
     pageRef = '/blog/膠彩_血百合'
-    parent = 'Blog'
     weight = 1
   [[menus.main]]
     name = 'About'
