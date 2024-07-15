@@ -1,4 +1,5 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
+{{ $imgsubdir := default "NULL" }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
 <!-- Colorize 色相[0, 360] 飽和度[0, 100] 百分比[0, 100] -->
 {{ $filter1 := (images.Colorize 188 30 12) }}
@@ -16,7 +17,10 @@
     {{ range $image := resources.Match (printf "images/%s/**/*.jpg" $imgdir) }}
       {{ if ne $rawdata "NULL" }}
         {{ range $resource := $rawdata }}
-          {{ $src := (printf "/images/%s/%s" $imgdir $resource.src) }}
+          {{ with $resource.imgsubdir }}
+            {{ $imgsubdir = . }}
+          {{ end }}
+          {{ $src := (printf "/images/%s/%s/%s" $imgdir $imgsubdir $resource.src) }}
           {{ if eq $src $image.Name }}
             {{ $title = $resource.title }}
             {{ with $resource.params.description }}
@@ -39,6 +43,7 @@
       <!-- JavaScript for logging to console -->
       <script>
         console.log("gallery title: {{ $title }}");
+        console.log("gallery imgsubdir: {{ $imgsubdir }}");
         console.log("gallery Name: {{ $image.Name }}");
         console.log("gallery description: {{ $description }}");
       </script>
