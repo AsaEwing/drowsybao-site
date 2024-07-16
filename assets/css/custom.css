@@ -9,10 +9,6 @@
   --text-2-dark: #868e96;
 }
 
-.blog-gallery {
-  max-width: 50%;
-}
-
 ul>li {
   display: flex;
   flex-wrap: wrap;
@@ -24,8 +20,12 @@ ul>li {
 ul>li>img {
   flex: 1;
   /* Ensures all images are flexible and share space equally */
-  max-width: 50%;
+  max-width: 40%;
   /* Ensures the images don’t get too big */
   height: auto;
   /* Maintains aspect ratio */
+}
+
+.blog-gallery {
+  max-width: 50%;
 }
