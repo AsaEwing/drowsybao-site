@@ -17,7 +17,7 @@ ul>li {
   /* Optional: adds space between images */
 }
 
-ul>li>img {
+ul>li>section>div>a>img {
   flex: 1;
   /* Ensures all images are flexible and share space equally */
   max-width: 40%;
