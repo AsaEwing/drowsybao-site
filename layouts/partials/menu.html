@@ -6,7 +6,7 @@
           <span itemprop="name">{{ .Name }}</span>
         </a>
         {{ if .HasChildren }}
-          <ul class="sub-menu">
+          <!--ul class="sub-menu">
             {{ range .Children }}
               <li class="{{ if page.HasMenuCurrent "main" . }}active{{ end }}" itemscope itemtype="http://www.schema.org/SiteNavigationElement">
                 <a aria-current="{{ if or (page.IsMenuCurrent "main" .) (page.HasMenuCurrent "main" .) }}page{{ else }}false{{ end }}" href="{{ .URL }}" itemprop="url">
@@ -14,7 +14,7 @@
                 </a>
               </li>
             {{ end }}
-          </ul>
+          </ul-->
         {{ end }}
       </li>
     {{ end }}
