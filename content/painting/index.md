@@ -17,4 +17,13 @@ resources:
   - src: i1.jpg
     imgsubdir: "膠彩/血百合/圖"
     title: 膠彩 血百合
+  - src: i2.jpg
+    imgsubdir: "膠彩/血百合/圖"
+    title: 膠彩 血百合
+  - src: i3.jpg
+    imgsubdir: "膠彩/血百合/圖"
+    title: 膠彩 血百合
+  - src: s1.jpg
+    imgsubdir: "膠彩/血百合/材料"
+    title: 膠彩 血百合
 ---
