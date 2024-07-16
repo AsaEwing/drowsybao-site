@@ -8,3 +8,7 @@
   --text-1-dark: #f8f9fa;
   --text-2-dark: #868e96;
 }
+
+.blog-gallery {
+  max-width: 50%;
+}
