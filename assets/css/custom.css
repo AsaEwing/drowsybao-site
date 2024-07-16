@@ -13,14 +13,19 @@
   max-width: 50%;
 }
 
-ul.li {
+ul>li {
   display: flex;
-  flex-wrap: wrap; /* Optional: allows wrapping to the next line if needed */
-  gap: 10px; /* Optional: adds space between images */
+  flex-wrap: wrap;
+  /* Optional: allows wrapping to the next line if needed */
+  gap: 10px;
+  /* Optional: adds space between images */
 }
 
-ul.li.img {
-  flex: 1; /* Ensures all images are flexible and share space equally */
-  max-width: 50%; /* Ensures the images don’t get too big */
-  height: auto; /* Maintains aspect ratio */
+ul>li>img {
+  flex: 1;
+  /* Ensures all images are flexible and share space equally */
+  max-width: 50%;
+  /* Ensures the images don’t get too big */
+  height: auto;
+  /* Maintains aspect ratio */
 }
