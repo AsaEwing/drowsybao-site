@@ -9,8 +9,7 @@
   --text-2-dark: #868e96;
 }
 
-ul>li,
-ul>li>p {
+ul>li {
   display: flex;
   flex-wrap: wrap;
   /* Optional: allows wrapping to the next line if needed */
@@ -18,8 +17,7 @@ ul>li>p {
   /* Optional: adds space between images */
 }
 
-ul>li>img,
-ul>li>img>p {
+ul>li>img {
   flex: 1;
   /* Ensures all images are flexible and share space equally */
   max-width: 40%;
