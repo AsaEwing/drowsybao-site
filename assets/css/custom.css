@@ -25,7 +25,3 @@ ul>li>img {
   height: auto;
   /* Maintains aspect ratio */
 }
-
-.blog-gallery {
-  max-width: 50%;
-}
