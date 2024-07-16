@@ -8,6 +8,7 @@
 {{ $imgdir := printf "images/%s/%s" (.Get "imgdir" | default "NULL") (.Get "imgsubdir" | default "NULL") }}
 {{ $image := resources.Get (printf "%s/%s" $imgdir (.Get "name" | default "NULL")) }}
 {{ $maxwidth := (.Get "max-width" | default "NULL") }}
+{{ $maxwidth := (.Get "title" | default "") }}
 {{ $imageTmp := $image }}
 {{ $imageTmp = $imageTmp.Filter $filter1 }}
 {{ $imageTmp = $imageTmp.Filter $filter2 }}
@@ -16,8 +17,8 @@
 {{ $thumbnail := $image.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
 {{ $full := $image.Filter (slice images.AutoOrient (images.Process "fit 1600x1600")) }}
 {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
-<a class="gallery-item" href="{{ $image.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}" data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" title="{{ .Title }}" description="{{ .Description }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $thumbnail.Width }} / {{ $thumbnail.Height }}">
-  <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ $color }}" alt="{{ .Title }}" />
+<a class="gallery-item" href="{{ $image.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}" data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" title="{{ $title }}" description="{{ .Description }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $thumbnail.Width }} / {{ $thumbnail.Height }}">
+  <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ $color }}" alt="{{ $title }}" />
   <meta itemprop="contentUrl" content="{{ $image.RelPermalink }}" />
   {{ with site.Params.Author }}
     <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
