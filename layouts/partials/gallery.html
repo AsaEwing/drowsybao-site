@@ -40,13 +40,13 @@
         "image" $imageTmp
         )
       }}
-      <!-- JavaScript for logging to console -->
+      <!-- JavaScript for logging to console>
       <script>
         console.log("gallery title: {{ $title }}");
         console.log("gallery imgsubdir: {{ $imgsubdir }}");
         console.log("gallery Name: {{ $image.Name }}");
         console.log("gallery description: {{ $description }}");
-      </script>
+      </script-->
     {{ end }}
     {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
       {{ $image := .image }}
