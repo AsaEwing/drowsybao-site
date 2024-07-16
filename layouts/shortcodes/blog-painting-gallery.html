@@ -13,16 +13,4 @@
 {{ $imageTmp = $imageTmp.Filter $filter1 }}
 {{ $imageTmp = $imageTmp.Filter $filter2 }}
 {{ $imageTmp = $imageTmp.Filter $logoFilter }}
-<!--img class="blog-gallery" src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}-->
-{{ $thumbnail := $image.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
-{{ $full := $image.Filter (slice images.AutoOrient (images.Process "fit 1600x1600")) }}
-{{ $color := index $thumbnail.Colors 0 | default "transparent" }}
-<a class="gallery-item" href="{{ $image.RelPermalink }}" data-pswp-src="{{ $full.RelPermalink }}" data-pswp-width="{{ $full.Width }}" data-pswp-height="{{ $full.Height }}" title="{{ $title }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ $thumbnail.Width }} / {{ $thumbnail.Height }}">
-    <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ $color }}" alt="{{ $title }}" />
-    <meta itemprop="contentUrl" content="{{ $image.RelPermalink }}" />
-    {{ with site.Params.Author }}
-        <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
-        <meta itemprop="name" content="{{ site.Params.Author.name }}" />
-        </span>
-    {{ end }}
-</a>
+<img class="blog-gallery" src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}>

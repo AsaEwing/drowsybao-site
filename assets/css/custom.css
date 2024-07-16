@@ -15,26 +15,13 @@ ul>li {
   /* Optional: allows wrapping to the next line if needed */
   gap: 10px;
   /* Optional: adds space between images */
-  flex-direction: column;
 }
 
-ul>li>a>img {
+ul>li>img {
   flex: 1;
   /* Ensures all images are flexible and share space equally */
   max-width: 40%;
   /* Ensures the images don’t get too big */
   height: auto;
   /* Maintains aspect ratio */
-}
-
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Optional: adds space between images */
-}
-
-.gallery-item {
-  flex: 1; /* Ensures all images are flexible and share space equally */
-  max-width: 50%; /* Ensures the images don’t get too big */
-  height: auto; /* Maintains aspect ratio */
 }
