@@ -12,3 +12,15 @@
 .blog-gallery {
   max-width: 50%;
 }
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap; /* Optional: allows wrapping to the next line if needed */
+  gap: 10px; /* Optional: adds space between images */
+}
+
+.image-container img {
+  flex: 1; /* Ensures all images are flexible and share space equally */
+  max-width: 50%; /* Ensures the images don’t get too big */
+  height: auto; /* Maintains aspect ratio */
+}
