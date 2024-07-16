@@ -12,4 +12,4 @@
 {{ $imageTmp = $imageTmp.Filter $filter1 }}
 {{ $imageTmp = $imageTmp.Filter $filter2 }}
 {{ $imageTmp = $imageTmp.Filter $logoFilter }}
-<img class="blog-gallery" src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }}max-width={{ $maxwidth }}%;{{ end }}>
+<img class="blog-gallery" src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}>
