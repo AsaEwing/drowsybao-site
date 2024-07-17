@@ -1,4 +1,15 @@
 User-agent: *
-{{ range .Pages }}
-Disallow: {{ .RelPermalink }}
-{{ end }}
+
+Disallow: /painting/
+
+Disallow: /plant/
+
+Allow: /
+
+Allow: /about/
+
+Allow: /blog/
+
+Allow: /instagram/
+
+Disallow: /license/
