@@ -26,4 +26,20 @@ resources:
   - src: s1.webp
     imgsubdir: "膠彩/血百合/材料"
     title: 膠彩 血百合
+
+  - src: p1.webp
+    imgsubdir: "膠彩/星點秋海棠/過程"
+    title: 膠彩 星點秋海棠
+  - src: p2.webp
+    imgsubdir: "膠彩/星點秋海棠/過程"
+    title: 膠彩 星點秋海棠
+  - src: i1.webp
+    imgsubdir: "膠彩/星點秋海棠/圖"
+    title: 膠彩 星點秋海棠
+  - src: i2.webp
+    imgsubdir: "膠彩/星點秋海棠/圖"
+    title: 膠彩 星點秋海棠
+  - src: i3.webp
+    imgsubdir: "膠彩/星點秋海棠/圖"
+    title: 膠彩 星點秋海棠
 ---
