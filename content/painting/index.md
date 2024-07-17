@@ -1,29 +1,29 @@
 ---
 date: 2024-07-10
 imgdir: "painting"
-featured_image: p1.jpg
+featured_image: p1.webp
 title: Painting
 sort_by: Name
 resources:
-  - src: p1.jpg
+  - src: p1.webp
     imgsubdir: "膠彩/血百合/過程"
     title: 膠彩 血百合
-  - src: p2.jpg
+  - src: p2.webp
     imgsubdir: "膠彩/血百合/過程"
     title: 膠彩 血百合
-  - src: p3.jpg
+  - src: p3.webp
     imgsubdir: "膠彩/血百合/過程"
     title: 膠彩 血百合
-  - src: i1.jpg
+  - src: i1.webp
     imgsubdir: "膠彩/血百合/圖"
     title: 膠彩 血百合
-  - src: i2.jpg
+  - src: i2.webp
     imgsubdir: "膠彩/血百合/圖"
     title: 膠彩 血百合
-  - src: i3.jpg
+  - src: i3.webp
     imgsubdir: "膠彩/血百合/圖"
     title: 膠彩 血百合
-  - src: s1.jpg
+  - src: s1.webp
     imgsubdir: "膠彩/血百合/材料"
     title: 膠彩 血百合
 ---

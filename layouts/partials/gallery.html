@@ -11,10 +11,13 @@
 {{ $title := "" }}
 {{ $description := "" }}
 {{ $imageTmp := slice }}
+{{ $images_jpg := resources.Match (printf "images/%s/**/*.jpg" $imgdir) }}
+{{ $images_webp := resources.Match (printf "images/%s/**/*.webp" $imgdir) }}
+{{ $allImages := append $images_jpg $images_webp }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
     {{ $images := slice }}
-    {{ range $image := resources.Match (printf "images/%s/**/*.jpg" $imgdir) }}
+    {{ range $image := $allImages }}
       {{ if ne $rawdata "NULL" }}
         {{ range $resource := $rawdata }}
           {{ with $resource.imgsubdir }}

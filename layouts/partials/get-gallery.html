@@ -1,14 +1,16 @@
 {{ $gallery := "" }}
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
-{{ $images := resources.Match (printf "images/%s/**/*.jpg" ($imgdir)) }}
-{{ if gt (len $images) 0 }}
-  {{ $featured := ($images.GetMatch (printf "images/%s/**/%s" ($imgdir) (.Params.featured_image | default "*feature*"))) | default (index $images 0) }}
+{{ $images_jpg := resources.Match (printf "images/%s/**/*.jpg" $imgdir) }}
+{{ $images_webp := resources.Match (printf "images/%s/**/*.webp" $imgdir) }}
+{{ $allImages := append $images_jpg $images_webp }}
+{{ if gt (len $allImages) 0 }}
+  {{ $featured := ($allImages.GetMatch (printf "images/%s/**/%s" ($imgdir) (.Params.featured_image | default "*feature*"))) | default (index $allImages 0) }}
   {{ $thumbnail := $featured.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
   {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
   {{ $imageCount := 0 }}
   {{ $albumCount := 0 }}
   {{ if .IsPage }}
-    {{ $imageCount = len $images }}
+    {{ $imageCount = len $allImages }}
   {{ else }}
     {{ range where .RegularPagesRecursive "Params.private" "ne" true }}
       {{ $albumCount = add $albumCount 1 }}
@@ -18,7 +20,7 @@
 
   {{ $gallery = dict
     "page" $
-    "images" $images
+    "images" $allImages
     "thumbnail" $thumbnail
     "color" $color
     "albumCount" $albumCount
