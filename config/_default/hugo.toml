@@ -63,6 +63,11 @@ title = "DrowsyBao"
     pageRef = '/blog/膠彩_血百合'
     weight = 1
   [[menus.main]]
+    parent = 'Blog'
+    name = '膠彩 血百合'
+    pageRef = '/blog/膠彩_星點秋海棠'
+    weight = 1
+  [[menus.main]]
     name = 'About'
     pageRef = '/about'
     weight = 10
@@ -80,38 +85,3 @@ title = "DrowsyBao"
 [services]
   [services.rss]
     limit = 100
-
-[languages]
-  [languages.en]
-    LanguageName = "English"
-    weight = 1
-
-    [[languages.en.menu.main]]
-    url    = "/about"
-    name   = "About"
-    weight = 5
-    [[languages.en.menu.main]]
-    url    = "/instagram"
-    name   = "Instagram Post"
-    weight = 10
-    [[languages.en.menu.main]]
-    url    = "/license"
-    name   = "License"
-    weight = 20
-
-  [languages.zh]
-    LanguageName = "中文"
-    weight = 2
-
-    [[languages.zh.menu.main]]
-    url    = "/about"
-    name   = "關於"
-    weight = 5
-    [[languages.zh.menu.main]]
-    url    = "/instagram"
-    name   = "Instagram 貼文"
-    weight = 10
-    [[languages.zh.menu.main]]
-    url    = "/license"
-    name   = "License"
-    weight = 20
