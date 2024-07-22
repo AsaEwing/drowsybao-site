@@ -1,4 +1,7 @@
 # This is a comment
+/
+  X-Robots-Tag: nosnippet
+
 /blog/*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
