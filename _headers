@@ -1,0 +1,16 @@
+# This is a comment
+/blog/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+
+/static/*
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: nosnippet
+
+/images/*
+  Access-Control-Allow-Origin: *
+  X-Robots-Tag: nosnippet
+
+https://drowsybao-site.pages.dev/*
+  X-Robots-Tag: noindex
