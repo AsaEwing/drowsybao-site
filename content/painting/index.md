@@ -17,6 +17,18 @@ resources:
   - src: p4.webp
     imgsubdir: "膠彩/血百合/過程"
     title: 膠彩 血百合
+  - src: p5.webp
+    imgsubdir: "膠彩/血百合/過程"
+    title: 膠彩 血百合
+  - src: p6.webp
+    imgsubdir: "膠彩/血百合/過程"
+    title: 膠彩 血百合
+  - src: p7.webp
+    imgsubdir: "膠彩/血百合/過程"
+    title: 膠彩 血百合
+  - src: p8.webp
+    imgsubdir: "膠彩/血百合/過程"
+    title: 膠彩 血百合
   - src: i1.webp
     imgsubdir: "膠彩/血百合/圖"
     title: 膠彩 血百合
