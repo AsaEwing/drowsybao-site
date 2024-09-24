@@ -57,4 +57,17 @@ resources:
   - src: i3.webp
     imgsubdir: "膠彩/星點秋海棠/圖"
     title: 膠彩 星點秋海棠
+
+  - src: i1.webp
+    imgsubdir: "膠彩/兩支牙刷/圖"
+    title: 膠彩 兩支牙刷
+  - src: i2.webp
+    imgsubdir: "膠彩/兩支牙刷/圖"
+    title: 膠彩 兩支牙刷
+  - src: s1.webp
+    imgsubdir: "膠彩/兩支牙刷/材料"
+    title: 膠彩 兩支牙刷
+  - src: s1.webp
+    imgsubdir: "膠彩/兩支牙刷/材料"
+    title: 膠彩 兩支牙刷
 ---
