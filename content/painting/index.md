@@ -64,10 +64,31 @@ resources:
   - src: i2.webp
     imgsubdir: "膠彩/兩支牙刷/圖"
     title: 膠彩 兩支牙刷
+  - src: i3.webp
+    imgsubdir: "膠彩/兩支牙刷/圖"
+    title: 膠彩 兩支牙刷
+  - src: i4.webp
+    imgsubdir: "膠彩/兩支牙刷/圖"
+    title: 膠彩 兩支牙刷
+  - src: i5.webp
+    imgsubdir: "膠彩/兩支牙刷/圖"
+    title: 膠彩 兩支牙刷
   - src: s1.webp
     imgsubdir: "膠彩/兩支牙刷/材料"
     title: 膠彩 兩支牙刷
-  - src: s1.webp
+  - src: s2.webp
+    imgsubdir: "膠彩/兩支牙刷/材料"
+    title: 膠彩 兩支牙刷
+  - src: s3.webp
+    imgsubdir: "膠彩/兩支牙刷/材料"
+    title: 膠彩 兩支牙刷
+  - src: s4.webp
+    imgsubdir: "膠彩/兩支牙刷/材料"
+    title: 膠彩 兩支牙刷
+  - src: s5.webp
+    imgsubdir: "膠彩/兩支牙刷/材料"
+    title: 膠彩 兩支牙刷
+  - src: s6.webp
     imgsubdir: "膠彩/兩支牙刷/材料"
     title: 膠彩 兩支牙刷
 ---
