@@ -58,6 +58,18 @@ resources:
     imgsubdir: "膠彩/星點秋海棠/圖"
     title: 膠彩 星點秋海棠
 
+  - src: p1.webp
+    imgsubdir: "膠彩/兩支牙刷/過程"
+    title: 膠彩 兩支牙刷
+  - src: p2.webp
+    imgsubdir: "膠彩/兩支牙刷/過程"
+    title: 膠彩 兩支牙刷
+  - src: p3.webp
+    imgsubdir: "膠彩/兩支牙刷/過程"
+    title: 膠彩 兩支牙刷
+  - src: p4.webp
+    imgsubdir: "膠彩/兩支牙刷/過程"
+    title: 膠彩 兩支牙刷
   - src: i1.webp
     imgsubdir: "膠彩/兩支牙刷/圖"
     title: 膠彩 兩支牙刷
@@ -71,6 +83,9 @@ resources:
     imgsubdir: "膠彩/兩支牙刷/圖"
     title: 膠彩 兩支牙刷
   - src: i5.webp
+    imgsubdir: "膠彩/兩支牙刷/圖"
+    title: 膠彩 兩支牙刷
+  - src: i6.webp
     imgsubdir: "膠彩/兩支牙刷/圖"
     title: 膠彩 兩支牙刷
   - src: s1.webp
