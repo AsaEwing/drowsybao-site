@@ -20,7 +20,7 @@ ul>li {
 ul>li>img {
   flex: 1;
   /* Ensures all images are flexible and share space equally */
-  max-width: 40%;
+  max-width: 45%;
   /* Ensures the images don’t get too big */
   height: auto;
   /* Maintains aspect ratio */
