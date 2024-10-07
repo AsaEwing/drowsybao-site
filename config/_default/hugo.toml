@@ -21,10 +21,10 @@ title = "DrowsyBao"
   [params.socialIcons]
     instagram = "https://www.instagram.com/drowsybao"
     email = "mailto:service@drowsybao.com"
+    website = "https://drowsybao.com/blog/"
     #facebook = "https://www.facebook.com/"
     #github = "https://github.com/AsaEwing/drowsybao-site"
     #youtube = "https://www.youtube.com/"
-    #website = "https://drowsybao.com"
     #mastodon = "https://drowsybao.com"
     #pixelfed = "https://drowsybao.com"
 
