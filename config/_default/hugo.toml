@@ -1,4 +1,4 @@
-copyright = "© 2024 DrowsyBao"
+copyright = "© 2024 DrowsyBao | 回"
 defaultContentLanguage = "en"
 disableKinds = ["taxonomy", "term"]
 enableRobotsTXT = true
@@ -14,7 +14,7 @@ title = "DrowsyBao | 回"
 
 [params]
   defaultTheme = "dark"
-  title = "DrowsyBao Gallery"
+  title = "DrowsyBao | 回 Gallery"
   [params.author]
     email = "service@drowsybao.com"
     name = "Asa Kuo"
