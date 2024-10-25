@@ -5,7 +5,7 @@ enableRobotsTXT = true
 languageCode = "en"
 timeZone = "Asia/Taipei"
 timeout = "600s"
-title = "DrowsyBao"
+title = "DrowsyBao | 回"
 
 [sitemap]
   changefreq = 'weekly'
