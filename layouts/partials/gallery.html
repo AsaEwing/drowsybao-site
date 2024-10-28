@@ -1,6 +1,7 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
 {{ $imgsubdir := default "NULL" }}
 {{ $rawdata := (.Params.resources | default "NULL") }}
+{{ $filtertype := default "NULL" }}
 <!-- Colorize 色相[0, 360] 飽和度[0, 100] 百分比[0, 100] -->
 {{ $filter1 := (images.Colorize 188 30 12) }}
 <!-- Brightness 百分比[-100, 100] -->
