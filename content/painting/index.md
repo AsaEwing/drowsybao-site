@@ -70,6 +70,15 @@ resources:
   - src: p4.webp
     imgsubdir: "膠彩/兩支牙刷/過程"
     title: 膠彩 兩支牙刷
+  - src: p5.webp
+    imgsubdir: "膠彩/兩支牙刷/過程"
+    title: 膠彩 兩支牙刷
+  - src: p6.webp
+    imgsubdir: "膠彩/兩支牙刷/過程"
+    title: 膠彩 兩支牙刷
+  - src: p7.webp
+    imgsubdir: "膠彩/兩支牙刷/過程"
+    title: 膠彩 兩支牙刷
   - src: i1.webp
     imgsubdir: "膠彩/兩支牙刷/圖"
     title: 膠彩 兩支牙刷
@@ -106,4 +115,44 @@ resources:
   - src: s6.webp
     imgsubdir: "膠彩/兩支牙刷/材料"
     title: 膠彩 兩支牙刷
+
+  - src: p1.webp
+    imgsubdir: "膠彩/水母漂流記/過程"
+    title: 膠彩 水母漂流記
+  - src: p2.webp
+    imgsubdir: "膠彩/水母漂流記/過程"
+    title: 膠彩 水母漂流記
+  - src: p3.webp
+    imgsubdir: "膠彩/水母漂流記/過程"
+    title: 膠彩 水母漂流記
+  - src: p4.webp
+    imgsubdir: "膠彩/水母漂流記/過程"
+    title: 膠彩 水母漂流記
+  - src: p5.webp
+    imgsubdir: "膠彩/水母漂流記/過程"
+    title: 膠彩 水母漂流記
+  - src: i1.webp
+    imgsubdir: "膠彩/水母漂流記/圖"
+    title: 膠彩 水母漂流記
+  - src: i2.webp
+    imgsubdir: "膠彩/水母漂流記/圖"
+    title: 膠彩 水母漂流記
+  - src: i3.webp
+    imgsubdir: "膠彩/水母漂流記/圖"
+    title: 膠彩 水母漂流記
+  - src: i4.webp
+    imgsubdir: "膠彩/水母漂流記/圖"
+    title: 膠彩 水母漂流記
+  - src: i5.webp
+    imgsubdir: "膠彩/水母漂流記/圖"
+    title: 膠彩 水母漂流記
+  - src: i6.webp
+    imgsubdir: "膠彩/水母漂流記/圖"
+    title: 膠彩 水母漂流記
+  - src: i7.webp
+    imgsubdir: "膠彩/水母漂流記/圖"
+    title: 膠彩 水母漂流記
+  - src: s1.webp
+    imgsubdir: "膠彩/水母漂流記/材料"
+    title: 膠彩 水母漂流記
 ---
