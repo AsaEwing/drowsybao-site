@@ -6,7 +6,7 @@
 {{ $logo := resources.Get "/images/copyright_drowsybao.png" }} 
 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
 {{ $imgdir := printf "images/%s/%s" (.Get "imgdir" | default "NULL") (.Get "imgsubdir" | default "NULL") }}
-{{ $image := resources.Get (printf "%s/%s" $imgdir (.Get "name" | default "NULL")) }}
+{{ $image := resources.Get (printf "%s/%s.webp" $imgdir (.Get "name" | default "NULL")) }}
 {{ $maxwidth := (.Get "max-width" | default "NULL") }}
 {{ $title := (.Get "title" | default "") }}
 {{ $class := (.Get "class" | default "") }}
