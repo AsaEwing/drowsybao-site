@@ -24,4 +24,4 @@
 {{ $image1280Tmp = $image1280Tmp.Filter $filter1 }}
 {{ $image1280Tmp = $image1280Tmp.Filter $filter2 }}
 {{ $image1280Tmp = $image1280Tmp.Filter $logoFilter }}
-<img loading="lazy" srcset="{{ $image640Tmp.RelPermalink }} 640w, {{ $image1280.RelPermalink }} 1280w" {{ if ne $class "NULL" }} class="{{ $class }} blog-gallery;" {{ else }} class="blog-gallery" {{ end }} src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}>
+<img loading="lazy" srcset="{{ $image640Tmp.RelPermalink }} 640w, {{ $image1280Tmp.RelPermalink }} 1280w" {{ if ne $class "NULL" }} class="{{ $class }} blog-gallery;" {{ else }} class="blog-gallery" {{ end }} src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}>
