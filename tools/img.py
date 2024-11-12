@@ -66,7 +66,7 @@ def resize_webp_output(path, is_webp):
 
 
 if __name__ == "__main__":
-    directory = "assets\images\painting\膠彩\水母漂流記\過程"
+    directory = "assets\images\painting\膠彩\星點秋海棠\過程"
     files = get_all_files(directory)
     for path_list in files:
         resize_webp_output(path_list[0], path_list[1])
