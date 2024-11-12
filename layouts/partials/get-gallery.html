@@ -28,19 +28,6 @@
 <!-- allImages -->
 {{ $allImages := append $filteredImages_jpg $filteredImages_webp }}
 {{ if gt (len $allImages) 0 }}
-  <!-- {{ $featured := index $allImages 0 }}
-  {{ if .Params.featured_image }}
-    {{ range $image := $allImages }}
-      {{ if strings.Contains $image.Name (.Params.featured_image) }}
-        {{ $featured = $image }}
-        {{ break }}
-      {{ end }}
-    {{ end }}
-  {{ else }}
-    {{ $randomIndex := (mod (int (now.Unix)) (len $allImages)) }}
-    {{ $featured = index $allImages $randomIndex }}
-  {{ end }}
-  {{ $thumbnail := $featured.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }} -->
   {{ $thumbnail := slice }}
   {{ range $image := $allImages }}
     {{ $imageTmp := $image }}
