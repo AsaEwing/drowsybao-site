@@ -1,7 +1,7 @@
 {{ $gallery := partial "get-gallery.html" . }}
 {{ with $gallery }}
   <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}" data-index="{{ .Index }}">
-    <img loading="lazy" style="background-color: {{ .color }}" alt="{{ .page.Title }}" class="gallery-thumbnail-{{ .page.Title }}" data-index="{{ .Index }}"/>
+    <img loading="lazy" style="background-color: {{ .color }}" alt="{{ .page.Title }}" class="gallery-thumbnail-{{ .page.Title | urlize }}" data-index="{{ .Index }}"/>
     <div>
       <h2>{{ .page.Title }}</h2>
       <p>
@@ -14,25 +14,34 @@
     </div>
   </a>
 {{ end }}
-
 <script>
   window.onload = function() {
     {{ with $gallery }}
-      // Array of all image paths from Hugo
-      const imagePaths_{{ .page.Title }} = [
-        {{ range $index, $image := .thumbnail }}
+      // Encode page title to ensure a valid identifier
+      const pageId = encodeURIComponent("{{ .page.Title }}");
+
+      // Array of all image paths for the current gallery
+      const imagePaths = [
+        {{ range $index, $image := .images }}
           "{{ $image.RelPermalink }}", 
         {{ end }}
       ];
-      const randomIndex_{{ .page.Title }} = Math.floor(Math.random() * imagePaths_{{ .page.Title }}.length);
-      const featuredImage_{{ .page.Title }} = imagePaths_{{ .page.Title }}[randomIndex_{{ .page.Title }}];
-      const thumbnail = document.querySelector('.gallery-thumbnail-{{ .page.Title }}');
-      if (thumbnail_{{ .page.Title }}) {
-        thumbnail_{{ .page.Title }}.src = featuredImage_{{ .page.Title }};
-        thumbnail_{{ .page.Title }}.alt = "Featured Image";
-        thumbnail_{{ .page.Title }}.width = featuredImage_{{ .page.Title }}.width;
-        thumbnail_{{ .page.Title }}.height = featuredImage_{{ .page.Title }}.height;
+
+      // Choose a random image from the list
+      const randomIndex = Math.floor(Math.random() * imagePaths.length);
+      const featuredImage = imagePaths[randomIndex];
+
+      // Select the thumbnail element using the encoded page title
+      const thumbnail = document.querySelector(`.gallery-thumbnail-${pageId}`);
+      if (thumbnail) {
+        thumbnail.src = featuredImage;
+        thumbnail.alt = "Featured Image";
+        thumbnail.width = featuredImage.width;
+        thumbnail.height = featuredImage.height;
       }
+
+      // Debugging output
+      console.log(`Featured image for page "${pageId}": ${featuredImage}`);
     {{ end }}
   };
 </script>
