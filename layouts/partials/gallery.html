@@ -17,13 +17,13 @@
 <!-- Filter out variations like i1_320.webp, i1_640.webp, etc. -->
 {{ $filteredImages_jpg := slice }}
 {{ range $image := $images_jpg }}
-  {{ if not (or (contains $image.Name "_320") (contains $image.Name "_640") (contains $image.Name "_1280")) }}
+  {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_jpg = $filteredImages_jpg | append $image }}
   {{ end }}
 {{ end }}
 {{ $filteredImages_webp := slice }}
 {{ range $image := $images_webp }}
-  {{ if not (or (contains $image.Name "_320") (contains $image.Name "_640") (contains $image.Name "_1280")) }}
+  {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_webp = $filteredImages_webp | append $image }}
   {{ end }}
 {{ end }}
