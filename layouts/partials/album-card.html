@@ -60,7 +60,7 @@
       // Array of all image paths from Hugo
       const imagePaths = [
         {{ range $index, $image := .images }}
-          "{{ $image.RelPermalink }}", 
+          {{ $image.RelPermalink }}, 
         {{ end }}
       ];
   
