@@ -27,6 +27,10 @@
         {{ break }}
       {{ end }}
     {{ end }}
+  {{ else }}
+    <!-- Select a random image if no featured_image is specified -->
+    {{ $randomIndex := randInt 0 (len $allImages) }}
+    {{ $featured = index $allImages $randomIndex }}
   {{ end }}
   {{ $thumbnail := $featured.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
   {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
