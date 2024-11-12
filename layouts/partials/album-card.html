@@ -1,47 +1,51 @@
 {{ $gallery := partial "get-gallery.html" . }}
-{{ with $gallery }}
-  <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}" data-index="{{ .Index }}">
-    <img loading="lazy" style="background-color: {{ .color }}" alt="{{ .page.Title }}" class="gallery-thumbnail-{{ .page.Title | urlize }}" data-index="{{ .Index }}"/>
-    <div>
-      <h2>{{ .page.Title }}</h2>
-      <p>
-        {{ if gt .albumCount 0 }}
-          {{ T "albumCount" (dict "count" (.albumCount | lang.FormatNumber 0) "photoCount" (.imageCount | lang.FormatNumber 0 | lang.Translate "photoCount")) }}
-        {{ else }}
-          {{ T "photoCount" (.imageCount | lang.FormatNumber 0) }}
-        {{ end }}
-      </p>
-    </div>
-  </a>
+{{ if ne $gallery "NULL" }}
+  {{ with $gallery }}
+    <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}" data-index="{{ .Index }}">
+      <img loading="lazy" style="background-color: {{ .color }}" alt="{{ .page.Title }}" class="gallery-thumbnail-{{ .page.Title | urlize }}" data-index="{{ .Index }}"/>
+      <div>
+        <h2>{{ .page.Title }}</h2>
+        <p>
+          {{ if gt .albumCount 0 }}
+            {{ T "albumCount" (dict "count" (.albumCount | lang.FormatNumber 0) "photoCount" (.imageCount | lang.FormatNumber 0 | lang.Translate "photoCount")) }}
+          {{ else }}
+            {{ T "photoCount" (.imageCount | lang.FormatNumber 0) }}
+          {{ end }}
+        </p>
+      </div>
+    </a>
+  {{ end }}
 {{ end }}
-<script>
-  window.onload = function() {
-    {{ with $gallery }}
-      // Encode page title to ensure a valid identifier
-      const pageId = encodeURIComponent("{{ .page.Title }}");
+{{ if ne $gallery "NULL" }}
+  <script>
+    window.onload = function() {
+      {{ with $gallery }}
+        // Encode page title to ensure a valid identifier
+        const pageId = encodeURIComponent("{{ .page.Title | urlize }}");
 
-      // Array of all image paths for the current gallery
-      const imagePaths = [
-        {{ range $index, $image := .images }}
-          "{{ $image.RelPermalink }}", 
-        {{ end }}
-      ];
+        // Array of all image paths for the current gallery
+        const imagePaths = [
+          {{ range $index, $image := .images }}
+            "{{ $image.RelPermalink }}", 
+          {{ end }}
+        ];
 
-      // Choose a random image from the list
-      const randomIndex = Math.floor(Math.random() * imagePaths.length);
-      const featuredImage = imagePaths[randomIndex];
+        // Choose a random image from the list
+        const randomIndex = Math.floor(Math.random() * imagePaths.length);
+        const featuredImage = imagePaths[randomIndex];
 
-      // Select the thumbnail element using the encoded page title
-      const thumbnail = document.querySelector(`.gallery-thumbnail-${pageId}`);
-      if (thumbnail) {
-        thumbnail.src = featuredImage;
-        thumbnail.alt = "Featured Image";
-        thumbnail.width = featuredImage.width;
-        thumbnail.height = featuredImage.height;
-      }
+        // Select the thumbnail element using the encoded page title
+        const thumbnail = document.querySelector(`.gallery-thumbnail-${pageId}`);
+        if (thumbnail) {
+          thumbnail.src = featuredImage;
+          thumbnail.alt = "Featured Image";
+          thumbnail.width = featuredImage.width;
+          thumbnail.height = featuredImage.height;
+        }
 
-      // Debugging output
-      console.log(`Featured image for page "${pageId}": ${featuredImage}`);
-    {{ end }}
-  };
-</script>
+        // Debugging output
+        console.log(`Featured image for page "${pageId}": ${featuredImage}`);
+      {{ end }}
+    };
+  </script>
+{{ end }}
