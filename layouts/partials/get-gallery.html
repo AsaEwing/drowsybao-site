@@ -29,7 +29,7 @@
     {{ end }}
   {{ else }}
     <!-- Select a random image if no featured_image is specified -->
-    {{ $randomIndex := randInt 0 (len $allImages) }}
+    {{ $randomIndex := (rand 0 (len $allImages)) | mod (len $allImages) }}
     {{ $featured = index $allImages $randomIndex }}
   {{ end }}
   {{ $thumbnail := $featured.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
