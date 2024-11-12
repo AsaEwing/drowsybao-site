@@ -3,9 +3,9 @@
 {{ $rawdata := (.Params.resources | default "NULL") }}
 {{ $filtertype := default "NULL" }}
 <!-- Colorize 色相[0, 360] 飽和度[0, 100] 百分比[0, 100] -->
-{{ $filter1 := (images.Colorize 188 30 12) }}
+{{ $filter1 := (images.Colorize 188 66 12) }}
 <!-- Brightness 百分比[-100, 100] -->
-{{ $filter2 := (images.Brightness -12) }}
+{{ $filter2 := (images.Brightness -6) }}
 <!-- 浮水印 -->
 {{ $logo := resources.Get "/images/copyright_drowsybao.png"}} 
 {{ $logoFilter := (images.Overlay $logo 24 24 ) }}
@@ -14,19 +14,21 @@
 {{ $imageTmp := slice }}
 {{ $images_jpg := resources.Match (printf "images/%s/**/*.jpg" $imgdir) }}
 {{ $images_webp := resources.Match (printf "images/%s/**/*.webp" $imgdir) }}
-<!-- Filter out variations like i1_320.webp, i1_640.webp, etc. -->
+<!-- Filter out variations like i1_320.jpg, i1_640.jpg, etc. -->
 {{ $filteredImages_jpg := slice }}
 {{ range $image := $images_jpg }}
   {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_jpg = $filteredImages_jpg | append $image }}
   {{ end }}
 {{ end }}
+<!-- Filter out variations like i1_320.webp, i1_640.webp, etc. -->
 {{ $filteredImages_webp := slice }}
 {{ range $image := $images_webp }}
   {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_webp = $filteredImages_webp | append $image }}
   {{ end }}
 {{ end }}
+<!-- allImages -->
 {{ $allImages := append $filteredImages_jpg $filteredImages_webp }}
 <section class="gallery">
   <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
