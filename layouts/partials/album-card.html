@@ -59,7 +59,7 @@
     window.onload = function() {
       // Array of all image paths from Hugo
       const imagePaths = [
-        {{ range $index, $image := .Images }}
+        {{ range $index, $image := .images }}
           "{{ $image.RelPermalink }}", 
         {{ end }}
       ];
