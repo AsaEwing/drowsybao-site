@@ -13,33 +13,26 @@
       </p>
     </div>
   </a>
+{{ end }}
 
-  <script>
-    window.onload = function() {
+<script>
+  window.onload = function() {
+    {{ with $gallery }}
       // Array of all image paths from Hugo
-      const imagePaths = [
+      const imagePaths_{{ .page.Title }} = [
         {{ range $index, $image := .thumbnail }}
           "{{ $image.RelPermalink }}", 
         {{ end }}
       ];
-  
-      // Generate a random index based on the number of images
-      const randomIndex = Math.floor(Math.random() * imagePaths.length);
-  
-      // Select the image by index and update the thumbnail
-      const featuredImage = imagePaths[randomIndex];
-  
-      // Optionally, update the thumbnail image
+      const randomIndex_{{ .page.Title }} = Math.floor(Math.random() * imagePaths_{{ .page.Title }}.length);
+      const featuredImage_{{ .page.Title }} = imagePaths_{{ .page.Title }}[randomIndex_{{ .page.Title }}];
       const thumbnail = document.querySelector('.gallery-thumbnail-{{ .page.Title }}');
-      if (thumbnail) {
-        thumbnail.src = featuredImage;
-        thumbnail.alt = "Featured Image";
-        thumbnail.width = featuredImage.width;
-        thumbnail.height = featuredImage.height;
+      if (thumbnail_{{ .page.Title }}) {
+        thumbnail_{{ .page.Title }}.src = featuredImage_{{ .page.Title }};
+        thumbnail_{{ .page.Title }}.alt = "Featured Image";
+        thumbnail_{{ .page.Title }}.width = featuredImage_{{ .page.Title }}.width;
+        thumbnail_{{ .page.Title }}.height = featuredImage_{{ .page.Title }}.height;
       }
-  
-      // Optionally, log the random image for debugging
-      console.log("Featured image path: " + featuredImage);
-    };
-  </script>
-{{ end }}
+    {{ end }}
+  };
+</script>
