@@ -17,7 +17,7 @@
     console.log("page imgdir: {{ .imgdir }}");
     console.log("page images: {{ .images }}");
   </script-->
-  <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
+  <!--a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
     {{ $thumbnail := .thumbnail }}
     {{ $thumbnail = $thumbnail.Filter $filter1 }}
     {{ $thumbnail = $thumbnail.Filter $filter2 }}
@@ -33,5 +33,52 @@
         {{ end }}
       </p>
     </div>
+  </a-->
+
+  <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}" data-index="{{ .Index }}">
+    <!-- {{ $thumbnail := .thumbnail }}
+    {{ $thumbnail = $thumbnail.Filter $filter1 }}
+    {{ $thumbnail = $thumbnail.Filter $filter2 }}
+    {{ $thumbnail = $thumbnail.Filter $logoFilter }} -->
+    
+    <!-- Add an identifier for each image (data-index) -->
+    <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ .color }}" alt="{{ .page.Title }}" class="gallery-thumbnail" data-index="{{ .Index }}"/>
+    <div>
+      <h2>{{ .page.Title }}</h2>
+      <p>
+        {{ if gt .albumCount 0 }}
+          {{ T "albumCount" (dict "count" (.albumCount | lang.FormatNumber 0) "photoCount" (.imageCount | lang.FormatNumber 0 | lang.Translate "photoCount")) }}
+        {{ else }}
+          {{ T "photoCount" (.imageCount | lang.FormatNumber 0) }}
+        {{ end }}
+      </p>
+    </div>
   </a>
+
+  <script>
+    window.onload = function() {
+      // Array of all image paths from Hugo
+      const imagePaths = [
+        {{ range $index, $image := .Images }}
+          "{{ $image.RelPermalink }}", 
+        {{ end }}
+      ];
+  
+      // Generate a random index based on the number of images
+      const randomIndex = Math.floor(Math.random() * imagePaths.length);
+  
+      // Select the image by index and update the thumbnail
+      const featuredImage = imagePaths[randomIndex];
+  
+      // Optionally, update the thumbnail image
+      const thumbnail = document.querySelector('.gallery-thumbnail');
+      if (thumbnail) {
+        thumbnail.src = featuredImage;
+        thumbnail.alt = "Featured Image";
+      }
+  
+      // Optionally, log the random image for debugging
+      console.log("Featured image path: " + featuredImage);
+    };
+  </script>
 {{ end }}
