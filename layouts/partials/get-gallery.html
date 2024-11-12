@@ -2,6 +2,15 @@
 {{ $imgdir := (.Params.imgdir | default "NULL") }}
 {{ $images_jpg := resources.Match (printf "images/%s/**/*.jpg" $imgdir) }}
 {{ $images_webp := resources.Match (printf "images/%s/**/*.webp" $imgdir) }}
+
+<!-- Grayscale 灰階 -->
+{{ $filter1 := images.Grayscale }}
+<!-- Brightness 百分比[-100, 100] -->
+{{ $filter2 := (images.Brightness -12) }}
+<!-- 浮水印 -->
+{{ $logo := resources.Get "/images/copyright_drowsybao.png"}} 
+{{ $logoFilter := (images.Overlay $logo 24 198 ) }}
+
 <!-- Filter out variations like i1_320.jpg, i1_640.jpg, etc. -->
 {{ $filteredImages_jpg := slice }}
 {{ range $image := $images_jpg }}
@@ -32,6 +41,14 @@
     {{ $featured = index $allImages $randomIndex }}
   {{ end }}
   {{ $thumbnail := $featured.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }} -->
+  {{ $thumbnail := slice }}
+  {{ range $image := $allImages }}
+    {{ $imageTmp := $image }}
+    {{ $imageTmp = $imageTmp.Filter $filter1 }}
+    {{ $imageTmp = $imageTmp.Filter $filter2 }}
+    {{ $imageTmp = $imageTmp.Filter $logoFilter }}
+    {{ $thumbnail = $thumbnail | append $imageTmp }}
+  {{ end }}
   {{ $featured := index $allImages 0 }}
   {{ $color := index $featured.Colors 0 | default "transparent" }}
   {{ $imageCount := 0 }}
@@ -48,6 +65,7 @@
   {{ $gallery = dict
     "page" $
     "images" $allImages
+    "thumbnail" $thumbnail
     "color" $color
     "albumCount" $albumCount
     "imageCount" $imageCount

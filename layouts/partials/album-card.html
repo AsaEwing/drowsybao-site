@@ -1,11 +1,4 @@
 {{ $gallery := partial "get-gallery.html" . }}
-<!-- Grayscale 灰階 -->
-{{ $filter1 := images.Grayscale }}
-<!-- Brightness 百分比[-100, 100] -->
-{{ $filter2 := (images.Brightness -12) }}
-<!-- 浮水印 -->
-{{ $logo := resources.Get "/images/copyright_drowsybao.png"}} 
-{{ $logoFilter := (images.Overlay $logo 24 198 ) }}
 {{ with $gallery }}
   <!-- JavaScript for logging to console>
   <script>
@@ -36,13 +29,7 @@
   </a-->
 
   <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}" data-index="{{ .Index }}">
-    <!-- {{ $thumbnail := .thumbnail }}
-    {{ $thumbnail = $thumbnail.Filter $filter1 }}
-    {{ $thumbnail = $thumbnail.Filter $filter2 }}
-    {{ $thumbnail = $thumbnail.Filter $logoFilter }} -->
-    
-    <!-- Add an identifier for each image (data-index) -->
-    <img loading="lazy" width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" style="background-color: {{ .color }}" alt="{{ .page.Title }}" class="gallery-thumbnail" data-index="{{ .Index }}"/>
+    <img loading="lazy" style="background-color: {{ .color }}" alt="{{ .page.Title }}" class="gallery-thumbnail-{{ .page.Title }}" data-index="{{ .Index }}"/>
     <div>
       <h2>{{ .page.Title }}</h2>
       <p>
@@ -59,8 +46,8 @@
     window.onload = function() {
       // Array of all image paths from Hugo
       const imagePaths = [
-        {{ range $index, $image := .images }}
-          {{ $image.RelPermalink }}, 
+        {{ range $index, $image := .thumbnail }}
+          "{{ $image.RelPermalink }}", 
         {{ end }}
       ];
   
@@ -71,10 +58,12 @@
       const featuredImage = imagePaths[randomIndex];
   
       // Optionally, update the thumbnail image
-      const thumbnail = document.querySelector('.gallery-thumbnail');
+      const thumbnail = document.querySelector('.gallery-thumbnail-{{ .page.Title }}');
       if (thumbnail) {
         thumbnail.src = featuredImage;
         thumbnail.alt = "Featured Image";
+        thumbnail.width = featuredImage.width;
+        thumbnail.height = featuredImage.height;
       }
   
       // Optionally, log the random image for debugging
