@@ -7,6 +7,7 @@
 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
 {{ $imgdir := printf "images/%s/%s" (.Get "imgdir" | default "NULL") (.Get "imgsubdir" | default "NULL") }}
 {{ $image := resources.Get (printf "%s/%s.webp" $imgdir (.Get "name" | default "NULL")) }}
+{{ $image320 := resources.Get (printf "%s/%s_320.webp" $imgdir (.Get "name" | default "NULL")) }}
 {{ $image640 := resources.Get (printf "%s/%s_640.webp" $imgdir (.Get "name" | default "NULL")) }}
 {{ $image1280 := resources.Get (printf "%s/%s_1280.webp" $imgdir (.Get "name" | default "NULL")) }}
 {{ $maxwidth := (.Get "max-width" | default "NULL") }}
@@ -16,6 +17,10 @@
 {{ $imageTmp = $imageTmp.Filter $filter1 }}
 {{ $imageTmp = $imageTmp.Filter $filter2 }}
 {{ $imageTmp = $imageTmp.Filter $logoFilter }}
+{{ $image320Tmp := $image320 }}
+{{ $image320Tmp = $image320Tmp.Filter $filter1 }}
+{{ $image320Tmp = $image320Tmp.Filter $filter2 }}
+{{ $image320Tmp = $image320Tmp.Filter $logoFilter }}
 {{ $image640Tmp := $image640 }}
 {{ $image640Tmp = $image640Tmp.Filter $filter1 }}
 {{ $image640Tmp = $image640Tmp.Filter $filter2 }}
@@ -24,4 +29,4 @@
 {{ $image1280Tmp = $image1280Tmp.Filter $filter1 }}
 {{ $image1280Tmp = $image1280Tmp.Filter $filter2 }}
 {{ $image1280Tmp = $image1280Tmp.Filter $logoFilter }}
-<img loading="lazy" srcset="{{ $image640Tmp.RelPermalink }} 640w, {{ $image1280Tmp.RelPermalink }} 1280w" {{ if ne $class "NULL" }} class="{{ $class }} blog-gallery;" {{ else }} class="blog-gallery" {{ end }} src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}>
+<img loading="lazy" srcset="{{ $image320Tmp.RelPermalink }} 320w, {{ $image640Tmp.RelPermalink }} 640w, {{ $image1280Tmp.RelPermalink }} 1280w" {{ if ne $class "NULL" }} class="{{ $class }} blog-gallery;" {{ else }} class="blog-gallery" {{ end }} src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}>
