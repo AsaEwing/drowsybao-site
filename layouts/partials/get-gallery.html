@@ -19,7 +19,15 @@
 <!-- allImages -->
 {{ $allImages := append $filteredImages_jpg $filteredImages_webp }}
 {{ if gt (len $allImages) 0 }}
-  {{ $featured := ($allImages.GetMatch (printf "images/%s/**/%s" ($imgdir) (.Params.featured_image | default "*feature*"))) | default (index $allImages 0) }}
+  {{ $featured := index $allImages 0 }} <!-- Default to first image if no match -->
+  {{ if .Params.featured_image }}
+    {{ range $image := $allImages }}
+      {{ if strings.Contains $image.Name (.Params.featured_image) }}
+        {{ $featured = $image }}
+        {{ break }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
   {{ $thumbnail := $featured.Filter (slice images.AutoOrient (images.Process "fit 600x600")) }}
   {{ $color := index $thumbnail.Colors 0 | default "transparent" }}
   {{ $imageCount := 0 }}
