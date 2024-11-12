@@ -17,5 +17,11 @@
 {{ $imageTmp = $imageTmp.Filter $filter2 }}
 {{ $imageTmp = $imageTmp.Filter $logoFilter }}
 {{ $image640Tmp := $image640 }}
+{{ $image640Tmp = $image640Tmp.Filter $filter1 }}
+{{ $image640Tmp = $image640Tmp.Filter $filter2 }}
+{{ $image640Tmp = $image640Tmp.Filter $logoFilter }}
 {{ $image1280Tmp := $image1280 }}
+{{ $image1280Tmp = $image1280Tmp.Filter $filter1 }}
+{{ $image1280Tmp = $image1280Tmp.Filter $filter2 }}
+{{ $image1280Tmp = $image1280Tmp.Filter $logoFilter }}
 <img loading="lazy" srcset="{{ $image640Tmp.RelPermalink }} 640w, {{ $image1280Tmp.RelPermalink }} 1280w" {{ if ne $class "NULL" }} class="{{ $class }} blog-gallery;" {{ else }} class="blog-gallery" {{ end }} src="{{ $imageTmp.RelPermalink }}" alt="{{ $imageTmp.Name }}" {{ if ne $maxwidth "NULL" }} style="max-width: {{ $maxwidth }}%;" {{ end }}>
