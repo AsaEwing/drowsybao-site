@@ -12,21 +12,52 @@
       const pageSize = document.querySelectorAll('.card').length;
       console.log("Number of album cards:", pageSize);
 
-      // Create an object that maps page IDs to their respective image paths
+      // JavaScript array to store page IDs
+      const pageIds = [
+        {{ range where .Pages "Params.private" "ne" true }}
+          "{{ .Title | urlize | safeJS }}",
+        {{ end }}
+      ];
+      console.log("Page IDs:", pageIds);
+
+      // Map each page ID to an array of its images' relative URLs
       const galleryImages = {
         {{ range where .Pages "Params.private" "ne" true }}
           "{{ .Title | urlize | safeJS }}": [
-            {{ range .Params.images }}
-              "{{ . }}",
+            {{ $gallery := partial "get-gallery.html" . }}
+            {{ if ne $gallery "NULL" }}
+              {{ range $gallery.images }}
+                "{{ .RelPermalink }}",
+              {{ end }}
             {{ end }}
           ],
         {{ end }}
       };
       console.log("Gallery Images:", galleryImages);
 
-      // Example of accessing image paths for a specific page
-      const samplePageId = "{{ (index (where .Pages "Params.private" "ne" true) 0).Title | urlize | safeJS }}"; // Example pageId
-      console.log(`Images for ${samplePageId}:`, galleryImages[samplePageId]);
+      // Iterate over page IDs to set a random featured image for each gallery thumbnail
+      pageIds.forEach(pageId => {
+        const imagePaths = galleryImages[pageId];
+        if (imagePaths && imagePaths.length > 0) {
+          // Choose a random image from the list
+          const randomIndex = Math.floor(Math.random() * imagePaths.length);
+          const featuredImage = imagePaths[randomIndex];
+
+          // Select the thumbnail element using the encoded page title
+          const thumbnail = document.querySelector(`.gallery-thumbnail-${pageId}`);
+          if (thumbnail) {
+            thumbnail.src = featuredImage;
+            thumbnail.alt = "Featured Image";
+            thumbnail.width = featuredImage.width;
+            thumbnail.height = featuredImage.height;
+          }
+
+          // Debugging output
+          console.log(`Featured image for page "${pageId}": ${featuredImage}`);
+        } else {
+          console.log(`No images found for page "${pageId}"`);
+        }
+      });
     });
   </script>
 {{ end }}
