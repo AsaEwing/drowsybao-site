@@ -11,11 +11,19 @@
 {{ $logo := resources.Get "/images/copyright_drowsybao.png"}} 
 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
 
+{{ $thumbnail := slice }}
 <!-- Filter out variations like i1_320.jpg, i1_640.jpg, etc. -->
 {{ $filteredImages_jpg := slice }}
 {{ range $image := $images_jpg }}
   {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_jpg = $filteredImages_jpg | append $image }}
+  {{ end }}
+  {{ if (strings.Contains $image.Name "_320") }}
+    {{ $imageTmp := $image }}
+    {{ $imageTmp = $imageTmp.Filter $filter1 }}
+    {{ $imageTmp = $imageTmp.Filter $filter2 }}
+    {{ $imageTmp = $imageTmp.Filter $logoFilter }}
+    {{ $thumbnail = $thumbnail | append $imageTmp }}
   {{ end }}
 {{ end }}
 <!-- Filter out variations like i1_320.webp, i1_640.webp, etc. -->
@@ -24,19 +32,18 @@
   {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_webp = $filteredImages_webp | append $image }}
   {{ end }}
-{{ end }}
-<!-- allImages -->
-{{ $allImages := append $filteredImages_jpg $filteredImages_webp }}
-{{ if gt (len $allImages) 0 }}
-  {{ $thumbnail := slice }}
-  {{ range $image := $allImages }}
+  {{ if (strings.Contains $image.Name "_320") }}
     {{ $imageTmp := $image }}
     {{ $imageTmp = $imageTmp.Filter $filter1 }}
     {{ $imageTmp = $imageTmp.Filter $filter2 }}
     {{ $imageTmp = $imageTmp.Filter $logoFilter }}
     {{ $thumbnail = $thumbnail | append $imageTmp }}
   {{ end }}
-  {{ $featured := index $allImages 0 }}
+{{ end }}
+<!-- allImages -->
+{{ $allImages := append $filteredImages_jpg $filteredImages_webp }}
+{{ if gt (len $allImages) 0 }}
+  {{ $featured := index $thumbnail 0 }}
   {{ $color := index $featured.Colors 0 | default "transparent" }}
   {{ $imageCount := 0 }}
   {{ $albumCount := 0 }}
