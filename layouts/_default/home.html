@@ -6,4 +6,27 @@
       {{ partial "album-card.html" . }}
     {{ end }}
   </section>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Count the elements with the class 'card', which are rendered by 'album-card.html'
+      const pageSize = document.querySelectorAll('.card').length;
+      console.log("Number of album cards:", pageSize);
+
+      // Create an object that maps page IDs to their respective image paths
+      const galleryImages = {
+        {{ range where .Pages "Params.private" "ne" true }}
+          "{{ .Title | urlize | safeJS }}": [
+            {{ range .Params.images }}
+              "{{ . }}",
+            {{ end }}
+          ],
+        {{ end }}
+      };
+      console.log("Gallery Images:", galleryImages);
+
+      // Example of accessing image paths for a specific page
+      const samplePageId = "{{ (index (where .Pages "Params.private" "ne" true) 0).Title | urlize | safeJS }}"; // Example pageId
+      console.log(`Images for ${samplePageId}:`, galleryImages[samplePageId]);
+    });
+  </script>
 {{ end }}

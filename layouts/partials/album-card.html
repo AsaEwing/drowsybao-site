@@ -16,37 +16,3 @@
     </a>
   {{ end }}
 {{ end }}
-{{ if ne $gallery "NULL" }}
-  <script>
-    window.onload = function() {
-      const pageSize = {{ len $gallery }} ;
-      {{ with $gallery }}
-        // Encode page title to ensure a valid identifier
-        const pageId = encodeURIComponent("{{ .page.Title | urlize }}");
-
-        // Array of all image paths for the current gallery
-        const imagePaths = [
-          {{ range $index, $image := .images }}
-            "{{ $image.RelPermalink }}", 
-          {{ end }}
-        ];
-
-        // Choose a random image from the list
-        const randomIndex = Math.floor(Math.random() * imagePaths.length);
-        const featuredImage = imagePaths[randomIndex];
-
-        // Select the thumbnail element using the encoded page title
-        const thumbnail = document.querySelector(`.gallery-thumbnail-${pageId}`);
-        if (thumbnail) {
-          thumbnail.src = featuredImage;
-          thumbnail.alt = "Featured Image";
-          thumbnail.width = featuredImage.width;
-          thumbnail.height = featuredImage.height;
-        }
-
-        // Debugging output
-        console.log(`Featured image for page "${pageId}": ${featuredImage}`);
-      {{ end }}
-    };
-  </script>
-{{ end }}
