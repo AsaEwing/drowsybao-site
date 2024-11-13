@@ -23,13 +23,13 @@
       // Map each page ID to an array of its images' relative URLs
       const galleryImages = {
         {{ range where .Pages "Params.private" "ne" true }}
-          {{ $gallery := partial "get-gallery.html" . }}
-          {{ if ne $gallery "NULL" }}
           "{{ .Title | urlize | safeJS }}": [
-            {{ range $gallery.thumbnail }}
-              "{{ .RelPermalink }}",
+            {{ $gallery := partial "get-gallery.html" . }}
+            {{ if ne $gallery "NULL" }}
+              {{ range $gallery.thumbnail }}
+                "{{ .RelPermalink }}",
+              {{ end }}
             {{ end }}
-          {{ end }}
           ],
         {{ end }}
       };
