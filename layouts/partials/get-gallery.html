@@ -18,7 +18,7 @@
   {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_jpg = $filteredImages_jpg | append $image }}
   {{ end }}
-  {{ if (strings.Contains $image.Name "_320") }}
+  {{ if (strings.Contains $image.Name "_640") }}
     {{ $imageTmp := $image }}
     {{ $imageTmp = $imageTmp.Filter $filter1 }}
     {{ $imageTmp = $imageTmp.Filter $filter2 }}
@@ -32,7 +32,7 @@
   {{ if not (or (strings.Contains $image.Name "_320") (strings.Contains $image.Name "_640") (strings.Contains $image.Name "_1280")) }}
     {{ $filteredImages_webp = $filteredImages_webp | append $image }}
   {{ end }}
-  {{ if (strings.Contains $image.Name "_320") }}
+  {{ if (strings.Contains $image.Name "_640") }}
     {{ $imageTmp := $image }}
     {{ $imageTmp = $imageTmp.Filter $filter1 }}
     {{ $imageTmp = $imageTmp.Filter $filter2 }}
