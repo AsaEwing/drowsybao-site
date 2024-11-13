@@ -19,6 +19,7 @@
 {{ if ne $gallery "NULL" }}
   <script>
     window.onload = function() {
+      const pageSize = {{ len $gallery }} ;
       {{ with $gallery }}
         // Encode page title to ensure a valid identifier
         const pageId = encodeURIComponent("{{ .page.Title | urlize }}");
