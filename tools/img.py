@@ -97,7 +97,7 @@ def resize_webp_output(path, is_webp):
 
 if __name__ == "__main__":
     directory = "assets\images\plant\斑葉合果芋"
-    directory = "C:/Users/asa.kuo/Downloads/Photos-001/水母 2"
+    directory = "C:/Users/asa.kuo/Downloads/Photos-001/蔥"
     files = get_all_files(directory)
     for path_list in files:
         resize_webp_output(path_list[0], path_list[1])
