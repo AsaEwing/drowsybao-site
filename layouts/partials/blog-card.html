@@ -1,3 +1,10 @@
 <hgroup>
     <h1>Blog</h1>
+    <h2>{{ .page.Title }}</h2>
+</hgroup>
+{{ $blogs := "NULL" }}
+<hgroup>
+    {{ range where .Pages "Params.private" "ne" true }}
+        <h2>{{ .Title | urlize | safeJS }}</h2>
+    {{ end }}
 </hgroup>
