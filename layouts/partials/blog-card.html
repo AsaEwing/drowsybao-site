@@ -1,7 +1,8 @@
 {{ $blogs := "NULL" }}
 <hgroup>
     {{ range where .Pages "Params.private" "ne" true }}
-        {{ if eq {{ .Title | urlize | safeJS }} "blog" }}
+        {{ $pagetitle := .Title | urlize | safeJS }}
+        {{ if eq $pagetitle "blog" }}
             <h1>{{ .Title }}</h1>
         {{ end }}
     {{ end }}
