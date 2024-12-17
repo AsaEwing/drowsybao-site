@@ -2,6 +2,7 @@
 layout: page
 rss_ignore: true
 title: "Blog"
+description: "Blog Test Description"
 menu:
   main:
     weight: 90
