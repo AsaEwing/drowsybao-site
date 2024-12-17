@@ -5,6 +5,16 @@
         {{ if eq $pagetitle "blog" }}
             <h1>{{ .Title }}</h1>
             <p>{{ .Description }}</p>
+            <ul>
+                {{ range .Params.resources }}
+                  <li>
+                    <a href="{{ .link }}">
+                      <img src="{{ .img }}.webp" alt="{{ .title }}" style="width:200px;height:auto;">
+                      <p>{{ .title }}</p>
+                    </a>
+                  </li>
+                {{ end }}
+              </ul>
         {{ end }}
     {{ end }}
 </hgroup>
