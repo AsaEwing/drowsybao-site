@@ -6,10 +6,10 @@ description: "Blog Test Description"
 sort_by: Name
 resources:
   - link: /blog/膠彩_血百合
-    img: "/膠彩/血百合/圖/i3"
+    img: "膠彩/血百合/圖/i3"
     title: 膠彩 腐敗之後-凋零
   - link: /blog/膠彩_水母漂流記
-    img: "/膠彩/水母漂流記/圖/i3"
+    img: "膠彩/水母漂流記/圖/i13"
     title: 膠彩 懶懶的
 menu:
   main:
