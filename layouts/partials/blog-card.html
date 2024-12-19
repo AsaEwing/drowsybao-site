@@ -27,7 +27,11 @@
                     {{ end }}
                     <li>
                         <a class="card" href="{{ .link }}" title="{{ .title }}" data-index="{{ .Index }}">
-                            <img src="{{ $thumbnail.RelPermalink }}" loading="lazy" alt="{{ .title }}" class="gallery-thumbnail-{{ .title | urlize }}" data-index="{{ .Index }}"/>
+                            {{ with $thumbnail }} 
+                                <img src="{{ .RelPermalink }}" loading="lazy" alt="{{ .title }}" class="gallery-thumbnail-{{ .title | urlize }}" data-index="{{ .Index }}"/>
+                            {{ else }}
+                                <p>Thumbnail is missing for {{ .title }}</p>
+                            {{ end }}
                             <p>{{ .title }}</p>
                         </a>
                     </li>
