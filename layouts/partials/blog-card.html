@@ -15,7 +15,7 @@
                 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
                 {{ range .Params.resources }}
                     {{ $images_webp := resources.Match (printf "images/%s*.webp" .img ) }}
-                    {{ $thumbnail := nil }}
+                    {{ $thumbnail := "NULL" }}
                     {{ range $image := $images_webp }}
                         {{ if (strings.Contains $image.Name "_640") }}
                             {{ $imageTmp := $image }}
@@ -27,8 +27,10 @@
                     {{ end }}
                     <li>
                         <a class="card" href="{{ .link }}" title="{{ .title }}" data-index="{{ .Index }}">
-                            {{ with $thumbnail }} 
-                                <img src="{{ .RelPermalink }}" loading="lazy" alt="{{ .title }}" class="gallery-thumbnail-{{ .title | urlize }}" data-index="{{ .Index }}"/>
+                            {{ if ne $thumbnail "NULL" }}
+                                {{ with $thumbnail }} 
+                                    <img src="{{ .RelPermalink }}" loading="lazy" alt="{{ .title }}" class="gallery-thumbnail-{{ .title | urlize }}" data-index="{{ .Index }}"/>
+                                {{ end }}    
                             {{ else }}
                                 <p>Thumbnail is missing for {{ .title }}</p>
                             {{ end }}
