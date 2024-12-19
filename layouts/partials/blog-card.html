@@ -6,6 +6,13 @@
             <h1>{{ .Title }}</h1>
             <p>{{ .Description }}</p>
             <ul>
+                <!-- Grayscale 灰階 -->
+                {{ $filter1 := images.Grayscale }}
+                <!-- Brightness 百分比[-100, 100] -->
+                {{ $filter2 := (images.Brightness -12) }}
+                <!-- 浮水印 -->
+                {{ $logo := resources.Get "/images/copyright_drowsybao.png"}} 
+                {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
                 {{ range .Params.resources }}
                     {{ $images_webp := resources.Match (printf "images/%s*.webp" .img ) }}
                     {{ $thumbnail := slice }}
