@@ -7,10 +7,20 @@
             <p>{{ .Description }}</p>
             <ul>
                 {{ range .Params.resources }}
-                    {{ $images_webp := resources.Match (printf "images/%s.webp" .img ) }}
+                    {{ $images_webp := resources.Match (printf "images/%s*.webp" .img ) }}
+                    {{ $thumbnail := slice }}
+                    {{ range $image := $images_webp }}
+                        {{ if (strings.Contains $image.Name "_640") }}
+                            {{ $imageTmp := $image }}
+                            {{ $imageTmp = $imageTmp.Filter $filter1 }}
+                            {{ $imageTmp = $imageTmp.Filter $filter2 }}
+                            {{ $imageTmp = $imageTmp.Filter $logoFilter }}
+                            {{ $thumbnail := $imageTmp }}
+                        {{ end }}
+                    {{ end }}
                     <li>
                         <a class="card" href="{{ .link }}" title="{{ .title }}" data-index="{{ .Index }}">
-                            <img src="{{ $images_webp }}" loading="lazy" alt="{{ .title }}" class="gallery-thumbnail-{{ .title | urlize }}" data-index="{{ .Index }}"/>
+                            <img width="{{ $thumbnail.Width }}" height="{{ $thumbnail.Height }}" src="{{ $thumbnail.RelPermalink }}" loading="lazy" alt="{{ .title }}" class="gallery-thumbnail-{{ .title | urlize }}" data-index="{{ .Index }}"/>
                             <p>{{ .title }}</p>
                         </a>
                     </li>
