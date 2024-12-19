@@ -25,6 +25,13 @@
                             {{ $thumbnail := $imageTmp }}
                         {{ end }}
                     {{ end }}
+                    <!-- JavaScript for logging to console-->
+                    {{ $images_webp_path := (printf "images/%s*.webp" .img ) }}
+                    <script>
+                        console.log("gallery title    : {{ .title }}");
+                        console.log("gallery imgpath  : {{ $images_webp_path }}");
+                        console.log("gallery thumbnail: {{ $thumbnail }}");
+                    </script>
                     <li>
                         <a class="card" href="{{ .link }}" title="{{ .title }}" data-index="{{ .Index }}">
                             {{ if ne $thumbnail "NULL" }}
