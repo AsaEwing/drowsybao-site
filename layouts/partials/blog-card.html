@@ -17,6 +17,11 @@
                     {{ $images_webp := resources.Match (printf "images/%s*.webp" .img ) }}
                     {{ $thumbnail := "NULL" }}
                     {{ range $image := $images_webp }}
+                        <!-- JavaScript for logging to console-->
+                        <script>
+                            console.log("range gallery imgpath: {{ $image.RelPermalink }}");
+                            console.log("range gallery Name   : {{ $image.Name }}");
+                        </script>
                         {{ if (strings.Contains $image.Name "_640") }}
                             {{ $imageTmp := $image }}
                             {{ $imageTmp = $imageTmp.Filter $filter1 }}
