@@ -15,7 +15,7 @@
                 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
                 {{ range .Params.resources }}
                     {{ $images_webp := resources.Match (printf "images/%s*.webp" .img ) }}
-                    {{ $thumbnail := slice }}
+                    {{ $thumbnail := nil }}
                     {{ range $image := $images_webp }}
                         {{ if (strings.Contains $image.Name "_640") }}
                             {{ $imageTmp := $image }}
