@@ -14,7 +14,7 @@
                 {{ $logo := resources.Get "/images/copyright_drowsybao.png"}} 
                 {{ $logoFilter := (images.Overlay $logo 24 198 ) }}
                 {{ range .Params.resources }}
-                    {{ $images_webp := resources.Match (printf "images/%s*.webp" .img ) }}
+                    {{ $images_webp := resources.Match (printf "/images/%s*.webp" .img ) }}
                     {{ $thumbnail := "NULL" }}
                     {{ range $image := $images_webp }}
                         <!-- JavaScript for logging to console-->
